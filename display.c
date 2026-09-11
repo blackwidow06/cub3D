@@ -6,48 +6,55 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/11 11:27:46 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/11 11:49:52 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	exit_window(t_game *game)
+int	exit_game(t_game *game)
 {
-	if (game->map)
-		free_tab(game->map);
-	if (game->mlx)
-	{
-		if (game->floor)
-			mlx_destroy_image(game->mlx, game->floor);
-		if (game->wall)
-			mlx_destroy_image(game->mlx, game->wall);
-		if (game->player)
-			mlx_destroy_image(game->mlx, game->player);
-		if (game->collect)
-			mlx_destroy_image(game->mlx, game->collect);
-		if (game->exit)
-			mlx_destroy_image(game->mlx, game->exit);
-		if (game->window)
-			mlx_destroy_window(game->mlx, game->window);
-		mlx_destroy_display(game->mlx);
-		gnl_clear(game);
-		free(game->mlx);
-	}
-	exit(1);
+	//if (game->map)
+	//	free_map(game->map);
+	//if (game->mlx)
+	//{
+	//	if (game->wall)
+	//		mlx_destroy_image(game->mlx, game->wall);
+	//	if (game->floor)
+	//		mlx_destroy_image(game->mlx, game->floor);
+	//	if (game->player)
+	//		mlx_destroy_image(game->mlx, game->player);
+	//	if (game->exit)
+	//		mlx_destroy_image(game->mlx, game->exit);
+	//	if (game->collectible)
+	//		mlx_destroy_image(game->mlx, game->collectible);
+	//	if (game->window)
+	//		mlx_destroy_window(game->mlx, game->window);
+	
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(0);
+}
+
+int    key_press(int keycode, t_game *game)
+{
+    if (keycode == KEY_ESC)
+        exit_game(game);
+    return (0);
 }
 
 int	main(void)
 {
-	void	*mlx;
-	void	*window;
-
-	mlx = mlx_init();
-	if (!mlx)
+	t_game game;
+	
+	game.mlx = mlx_init();
+	if (!game.mlx)
 		return (1);
-	window = mlx_new_window(mlx, 800, 600, "Cub3D");
-	if (!window)
+	game.window = mlx_new_window(game.mlx, 800, 600, "Cub3D");
+	if (!game.window)
 		return (1);
-	mlx_loop(mlx);
+	mlx_hook(game.window, 17, 0, exit_game, &game);
+	mlx_hook(game.window, 2, 1L << 0, key_press, &game);
+	mlx_loop(game.mlx);
 	return (0);
 }
