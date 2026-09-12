@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 11:21:37 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/12 13:12:16 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
+	if (check_map_file(argv[1]) != 0)
+	{
+		printf("Error : file .cub invalid\n");
+		return (1);	
+	}
 	texture.north = NULL;
 	texture.south = NULL;
 	texture.west = NULL;
@@ -81,6 +86,11 @@ int	main(int argc, char **argv)
 	texture.floor = NULL;
 	if (read_map(argv[1], &texture) != 0)
 		return (1);
+	if (check_textures(&texture) != 0)
+	{
+		printf("Error : invalid texture\n");
+		return (1);
+	}
 	printf("Nord : %s", texture.north);
 	printf("Sud : %s", texture.south);
 	printf("Ouest : %s", texture.west);

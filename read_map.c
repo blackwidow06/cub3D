@@ -6,28 +6,71 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 09:08:11 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 11:42:19 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/12 13:04:57 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//NO ./textures/north.xpm    /*chemin des textures*/
-//SO ./textures/south.xpm
-//WE ./textures/west.xpm
-//EA ./textures/east.xpm  
-
-//F 220,100,0   == couleur sol
-//C 135,206,235 == couleur plafond
-
-//111111
-//100001
-//1000N1
-//111111
 
 /*parsing doit lire le fihier map ligne par ligne, recupere le chemin de 
 la texture et le stocke dans la structure (north_texture) ensuite on peut
 charger l'image (comme dans so_long un peu)*/
 
+/*Lire le fichier .cub
+arreter la lecture du fichier si ya pas
+Récupérer les textures et les couleurs
+Vérifier qu’il ne manque rien
+Vérifier que les chemins sont valides
+Lire et vérifier la map
+Initialiser la fenêtre et le raycasting*/
+
 #include "cub3D.h"
+
+int	check_map_file(char *filename)
+{
+	int len;
+	int	fd;
+
+	len = ft_strlen(filename);
+	if (len < 4)
+		return (1);
+	if (ft_strncmp(filename + len - 4, ".cub", 4) != 0)
+		return (1);
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (1);
+	return (0);
+}
+
+static	int	check_texture_file(char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	return (0);
+}
+
+int	check_textures(t_texture *texture)
+{
+	if (texture->north == NULL)
+		return (1);
+	if (texture->south == NULL)
+		return (1);
+	if (texture->west == NULL)
+		return (1);
+	if (texture->east == NULL)
+		return (1);
+	if (check_texture_file(texture->north) != 0)
+		return (1);
+	if (check_map_file(texture->south) != 0)
+		return (1);
+	if (check_texture_file(texture->west) != 0)
+		return (1);
+	if (check_texture_file(texture->east) != 0)
+		return (1);
+	return (0);
+}
 
 int	read_map(char *filename, t_texture *texture)
 {

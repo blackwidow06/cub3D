@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 11:54:00 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/12 13:01:38 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef	struct s_player
 	
 }			t_player;
 
+/*read_map.c*/
 int	read_map(char *filename, t_texture *texture);
+int	check_map_file(char *filename);
+int	check_textures(t_texture *texture);
 
 #endif
