@@ -6,7 +6,7 @@
 #    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/12 11:19:09 by malavaud         ###   ########.fr        #
+#    Updated: 2026/09/12 12:35:22 by malavaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC          = cc
 
 CFLAGS      = -Wall -Wextra -Werror
 
-SRCS        = display.c \
+SRCS        = main.c \
               read_map.c \
               get_next_line/get_next_line.c \
               get_next_line/get_next_line_utils.c
