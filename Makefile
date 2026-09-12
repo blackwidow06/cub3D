@@ -17,7 +17,11 @@ CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 
 SRCS        = main.c \
-              read_map.c \
+			  init_structs.c \
+			  parsing/parsing.c \
+			  parsing/read_map.c \
+			  parsing/checks.c \
+			  error/exit_error.c \
               get_next_line/get_next_line.c \
               get_next_line/get_next_line_utils.c
 

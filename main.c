@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 13:17:27 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/12 14:01:30 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int    key_press(int keycode, t_game *game)
 {
     if (keycode == KEY_ESC)
-        exit_game(game);
+        exit_game(game, "Exit game");
     return (0);
 }
 
@@ -35,35 +35,61 @@ int    key_press(int keycode, t_game *game)
 //	return (0);
 //}
 
-//int	main(int argc, char **argv)
-//{
-//	if (argc != 2)
-//		return (1);
-//	read_map(argv[1]);
-//	return (0);
-//}
+// int	main(int argc, char **argv)
+// {
+// 	t_texture	texture;
 
-int	main(int argc, char **argv)
+// 	if (argc != 2)
+// 		return (1);
+// 	if (check_map_file(argv[1]) != 0)
+// 	{
+// 		printf("Error : file .cub invalid\n");
+// 		return (1);	
+// 	}
+// 	texture.north = NULL;
+// 	texture.south = NULL;
+// 	texture.west = NULL;
+// 	texture.east = NULL;
+// 	texture.ceiling = NULL;
+// 	texture.floor = NULL;
+// 	if (read_map(argv[1], &texture) != 0)
+// 		return (1);
+// 	if (check_textures(&texture) != 0)
+// 	{
+// 		printf("Error : invalid texture\n");
+// 		return (1);
+// 	}
+// 	printf("Nord : %s", texture.north);
+// 	printf("Sud : %s", texture.south);
+// 	printf("Ouest : %s", texture.west);
+// 	printf("Est : %s", texture.east);
+// 	free(texture.north);
+// 	free(texture.south);
+// 	free(texture.west);
+// 	free(texture.east);
+// 	return (0);
+// }
+
+int	main(int argc, char **argv) /* exemple de main rassemblant les checks ton ancien est juste au dessus*/
 {
 	t_texture	texture;
+	t_game		game;
 
-	if (argc != 2)
-		return (1);
-	//init_texture(&texture); /* dans le main on initialise nos struct avec les 4 fonctions dediees */
-	if (read_map(argv[1], &texture) != 0)
-		return (1);
-	if (check_textures(&texture) != 0)
-	{
-		printf("Error : invalid texture\n");
-		return (1);
-	}
-	printf("Nord : %s", texture.north);
-	printf("Sud : %s", texture.south);
+ 	if (argc != 2)
+ 		return (1);
+/* on init game et texture ici comme ca on pourra fermer le program avec exit game partout*/
+ 	init_texture(&texture);		
+ 	init_game(&game);
+/* j'ai deplacer toutes les manip de check et de readmap dans le parsing */	
+ 	parsing(argv[1], &texture, &game); 
+ 	printf("Nord : %s", texture.north);
+ 	printf("Sud : %s", texture.south);
 	printf("Ouest : %s", texture.west);
-	printf("Est : %s", texture.east);
-	free(texture.north);
-	free(texture.south);
-	free(texture.west);
-	free(texture.east);
-	return (0);
+ 	printf("Est : %s", texture.east);
+ 	free(texture.north);
+ 	free(texture.south);
+ 	free(texture.west);
+ 	free(texture.east);
+ 	return (0);
 }
+

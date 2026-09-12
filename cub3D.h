@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 13:17:44 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/12 14:06:49 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ typedef	struct s_player
 /*read_map.c*/
 int	read_map(char *filename, t_texture *texture);
 int	check_map_file(char *filename);
-int	check_textures(t_texture *texture);
+int	check_textures(t_texture *texture);	
+int	parsing(char *filename, t_texture *texture, t_game *game);
+
+int	exit_game(t_game *game, char *end_mes);
+
+void	init_texture(t_texture *texture);
+void	init_game(t_game *game);
 
 #endif
