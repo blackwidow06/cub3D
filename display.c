@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/11 11:42:49 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/12 10:08:39 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,26 @@ int    key_press(int keycode, t_game *game)
     return (0);
 }
 
-int	main(void)
-{
-	t_game game;
+//int	main(void)
+//{
+//	t_game game;
 	
-	game.mlx = mlx_init();
-	if (!game.mlx)
+//	game.mlx = mlx_init();
+//	if (!game.mlx)
+//		return (1);
+//	game.window = mlx_new_window(game.mlx, 800, 600, "Cub3D");
+//	if (!game.window)
+//		return (1);
+//	mlx_hook(game.window, 17, 0, exit_game, &game);
+//	mlx_hook(game.window, 2, 1L << 0, key_press, &game);
+//	mlx_loop(game.mlx);
+//	return (0);
+//}
+
+int	main(int argc, char **argv)
+{
+	if (argc != 2)
 		return (1);
-	game.window = mlx_new_window(game.mlx, 800, 600, "Cub3D");
-	if (!game.window)
-		return (1);
-	mlx_hook(game.window, 17, 0, exit_game, &game);
-	mlx_hook(game.window, 2, 1L << 0, key_press, &game);
-	mlx_loop(game.mlx);
+	read_map(argv[1]);
 	return (0);
 }

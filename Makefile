@@ -6,7 +6,7 @@
 #    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/11 11:13:29 by malavaud         ###   ########.fr        #
+#    Updated: 2026/09/12 10:12:42 by malavaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,9 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 
 SRCS		= display.c \
+				read_map.c \
+				get_next_line/get_next_line.c \
+				get_next_line/get_next_line_utils.c \
 
 OBJS		= $(SRCS:.c=.o)
 
