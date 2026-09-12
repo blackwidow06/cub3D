@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 10:31:25 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/12 11:44:00 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*window;
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-
+	
 }	t_game;
 
 typedef struct s_texture
