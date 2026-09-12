@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/11 11:41:14 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/12 10:11:16 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define CUB3D_H
 
 #include "minilibx-linux/mlx.h"
+#include "get_next_line/get_next_line.h"
 #include <unistd.h>
+#include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
 
@@ -42,5 +44,7 @@ typedef struct s_game
 	//int		player_y;
 	//int		moves;
 }	t_game;
+
+int	read_map(char *filename);
 
 #endif
