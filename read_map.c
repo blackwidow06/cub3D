@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 09:08:11 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 10:10:55 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/12 11:42:19 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ charger l'image (comme dans so_long un peu)*/
 
 #include "cub3D.h"
 
-int	read_map(char *filename)
+int	read_map(char *filename, t_texture *texture)
 {
 	int		fd;
 	char	*line;
@@ -40,10 +40,18 @@ int	read_map(char *filename)
 	line = get_next_line(fd);
 	while (line!= NULL)
 	{
-		printf("%s", line);
+		if (ft_strncmp(line, "NO ", 3) == 0) /*si NO*/
+			texture->north = ft_strdup(line + 3); /* recupere le chemi et stocke dans texture->north*/
+		else if (ft_strncmp(line, "SO ", 3) == 0)
+			texture->south = ft_strdup(line + 3);
+		else if (ft_strncmp(line, "WE ", 3) == 0)
+			texture->west = ft_strdup(line + 3);
+		else if (ft_strncmp(line, "EA ", 3) == 0)
+			texture->east = ft_strdup(line + 3);
 		free(line);
 		line = get_next_line(fd);
 	}
 	close (fd);
 	return (0);
 }
+
