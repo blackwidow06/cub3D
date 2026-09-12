@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 10:31:43 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/12 11:21:37 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,35 @@ int    key_press(int keycode, t_game *game)
 //	return (0);
 //}
 
+//int	main(int argc, char **argv)
+//{
+//	if (argc != 2)
+//		return (1);
+//	read_map(argv[1]);
+//	return (0);
+//}
+
 int	main(int argc, char **argv)
 {
+	t_texture	texture;
+
 	if (argc != 2)
 		return (1);
-	read_map(argv[1]);
+	texture.north = NULL;
+	texture.south = NULL;
+	texture.west = NULL;
+	texture.east = NULL;
+	texture.ceiling = NULL;
+	texture.floor = NULL;
+	if (read_map(argv[1], &texture) != 0)
+		return (1);
+	printf("Nord : %s", texture.north);
+	printf("Sud : %s", texture.south);
+	printf("Ouest : %s", texture.west);
+	printf("Est : %s", texture.east);
+	free(texture.north);
+	free(texture.south);
+	free(texture.west);
+	free(texture.east);
 	return (0);
 }

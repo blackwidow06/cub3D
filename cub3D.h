@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 10:31:25 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/12 11:54:00 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "minilibx-linux/mlx.h"
 #include "get_next_line/get_next_line.h"
-#include "libft/libft.h"
+#include <libft.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
@@ -31,12 +31,8 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*window;
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
 
-}	t_game;
+}			t_game;
 
 typedef struct s_texture
 {
@@ -47,13 +43,27 @@ typedef struct s_texture
 	char	*ceiling;
 	char	*floor;
 	
-}	t_texture;
+}			t_texture;
 
 typedef	struct s_map
 {
+	char	**grid;
+	int		width;
+	int		height;
 	
-}	t_map;
+}			t_map;
 
-int	read_map(char *filename);
+typedef	struct s_player
+{
+	double	x; /*placement*/
+	double	y;
+	double 	dir_x; /*regard du joueur hori*/
+	double	dir_y; /*regard du joueur verti*/
+	double	plane_x; /*largeur de la camera hori*/
+	double	plane_y; /*largeur de la camera verti*/
+	
+}			t_player;
+
+int	read_map(char *filename, t_texture *texture);
 
 #endif

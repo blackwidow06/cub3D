@@ -6,46 +6,57 @@
 #    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/12 10:12:42 by malavaud         ###   ########.fr        #
+#    Updated: 2026/09/12 11:19:09 by malavaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= cub3D
+NAME        = cub3D
 
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CC          = cc
 
-SRCS		= display.c \
-				read_map.c \
-				get_next_line/get_next_line.c \
-				get_next_line/get_next_line_utils.c \
+CFLAGS      = -Wall -Wextra -Werror
 
-OBJS		= $(SRCS:.c=.o)
+SRCS        = display.c \
+              read_map.c \
+              get_next_line/get_next_line.c \
+              get_next_line/get_next_line_utils.c
 
-MLX_DIR		= minilibx-linux
-MLX_LIB		= $(MLX_DIR)/libmlx.a
-MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+OBJS        = $(SRCS:.c=.o)
 
-INCLUDES	= -I. -I$(MLX_DIR) -Ignl
+MLX_DIR     = minilibx-linux
+MLX_LIB     = $(MLX_DIR)/libmlx.a
 
-RM			= rm -f
+LIBFT_DIR   = libft
+LIBFT_LIB   = $(LIBFT_DIR)/libft.a
+
+MLX_FLAGS   = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+
+INCLUDES    = -I. -I$(MLX_DIR) -Iget_next_line -I$(LIBFT_DIR)
+
+RM          = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MLX_LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(OBJS) $(MLX_LIB) $(LIBFT_LIB)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) $(LIBFT_LIB) -o $(NAME)
 
 $(MLX_LIB):
 	make -C $(MLX_DIR)
 
-%.o: %.c so_long.h
+$(LIBFT_LIB):
+	make -C $(LIBFT_DIR)
+
+%.o: %.c cub3D.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
+	make -C $(MLX_DIR) clean
+	make -C $(LIBFT_DIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
