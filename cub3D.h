@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 13:16:11 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/12 14:12:44 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ typedef	struct s_player
 int	read_map(char *filename, t_texture *texture);
 int	check_map_file(char *filename);
 int	check_textures(t_texture *texture);
+
+void	init_texture(t_texture *texture);
 
 #endif

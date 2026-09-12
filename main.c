@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 13:16:17 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/12 14:12:59 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,7 @@ int	main(int argc, char **argv)
 		printf("Error : file .cub invalid\n");
 		return (1);	
 	}
-	texture.north = NULL;
-	texture.south = NULL;
-	texture.west = NULL;
-	texture.east = NULL;
-	texture.ceiling = NULL;
-	texture.floor = NULL;
+	init_texture(&texture);
 	if (read_map(argv[1], &texture) != 0)
 		return (1);
 	if (check_textures(&texture) != 0)
