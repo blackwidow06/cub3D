@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 13:09:56 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/12 13:17:27 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ int	main(int argc, char **argv)
 	//init_texture(&texture); /* dans le main on initialise nos struct avec les 4 fonctions dediees */
 	if (read_map(argv[1], &texture) != 0)
 		return (1);
+	if (check_textures(&texture) != 0)
+	{
+		printf("Error : invalid texture\n");
+		return (1);
+	}
 	printf("Nord : %s", texture.north);
 	printf("Sud : %s", texture.south);
 	printf("Ouest : %s", texture.west);
