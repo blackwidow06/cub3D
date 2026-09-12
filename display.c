@@ -6,18 +6,11 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 12:09:37 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/12 13:09:56 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-int	exit_game(t_game *game)
-{
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	exit(0);
-}
 
 int    key_press(int keycode, t_game *game)
 {
@@ -56,12 +49,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
-	texture.north = NULL;
-	texture.south = NULL;
-	texture.west = NULL;
-	texture.east = NULL;
-	texture.ceiling = NULL;
-	texture.floor = NULL;
+	//init_texture(&texture); /* dans le main on initialise nos struct avec les 4 fonctions dediees */
 	if (read_map(argv[1], &texture) != 0)
 		return (1);
 	printf("Nord : %s", texture.north);

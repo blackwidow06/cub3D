@@ -1,12 +1,12 @@
 # Cub3D TODO
 
 ## Parsing
-- [ ] Lire fichier .cub
-- [ ] Parser textures
-- [ ] Parser couleurs
-- [ ] Parser map
-- [ ] Valider map fermée
-- [ ] Gérer erreurs
+- [P] Lire fichier .cub
+- [P] Parser textures
+- [P] Parser couleurs
+- [P] Parser map
+- [P] Valider map fermée
+- [P] Gérer erreurs
 
 ## Player
 - [ ] Trouver position initiale
