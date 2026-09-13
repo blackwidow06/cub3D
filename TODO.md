@@ -36,3 +36,26 @@
 - [ ] Mauvaises couleurs
 - [ ] Déplacements contre murs
 - [ ] Segfaults / leaks
+
+
+main
+ │
+ ├── Parsing
+ │    ├── Textures
+ │    ├── Couleurs
+ │    └── Map
+ │
+ ├── Validation
+ │    ├── Config complète
+ │    └── Map fermée
+ │
+ ├── Initialisation
+ │    ├── MLX
+ │    ├── Joueur
+ │    └── Textures
+ │
+ └── Game loop
+      ├── Input
+      ├── Movement
+      ├── Raycasting
+      └── Rendering

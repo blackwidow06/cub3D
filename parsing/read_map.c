@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 09:08:11 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 14:00:25 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/13 12:52:49 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ Vérifier qu’il ne manque rien
 Vérifier que les chemins sont valides
 Lire et vérifier la map
 Initialiser la fenêtre et le raycasting*/
+
+/* ATTENTION : Je me pose la question de si il
+faudrait faire un readmap pour tout le fichier .cub
+et separer tout les element pour les traiter ensuite.
+on garde ce que tu as fait pour les textures mais il faudrait se
+servir de ta boucle GNL pour chopper la map et les couleurs
+comme ca on range tout dans leurs case/structures et on les traites ensuite*/
 
 #include "cub3D.h"
 
