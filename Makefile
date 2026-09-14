@@ -6,7 +6,7 @@
 #    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/14 10:34:53 by mrojouan         ###   ########.fr        #
+#    Updated: 2026/09/14 13:31:44 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS        = main.c \
               get_next_line/get_next_line_utils.c \
 			  init_struct.c \
 			  error.c \
+			  game/game.c \
 
 OBJS        = $(SRCS:.c=.o)
 

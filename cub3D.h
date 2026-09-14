@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 10:19:16 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:32:42 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@
 # define KEY_A 97
 # define KEY_D 100
 
-typedef struct s_game
-{
-	void	*mlx;
-	void	*window;
-
-}			t_game;
 
 typedef struct s_texture
 {
@@ -64,6 +58,26 @@ typedef	struct s_player
 	
 }			t_player;
 
+typedef struct s_image
+{
+    void    *img;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}   		t_image;
+
+typedef struct s_game
+{
+	void		*mlx;
+	void		*window;
+
+	t_texture	textures;
+	t_image		image;
+	t_map 		map;
+
+}			t_game;
+
 /*parsing/check_texture.c*/
 void	remove_newline(char *line);
 int	check_map_file(char *filename);
@@ -73,11 +87,14 @@ int	check_textures(t_texture *texture);
 int	read_map(char *filename, t_texture *texture);
 
 /*parsing/parsing.c*/
-int	parsing(char *filename, t_texture *texture, t_game *game);
+int	parsing(char *filename, t_game *game);
 
 /*init_struct.c*/
 void	init_texture(t_texture *texture);
 void	init_game(t_game *game);
+
+/*gam/game.c*/
+int	open_game(t_game *game);
 
 /*error.c*/
 int	exit_game(t_game *game, char *end_mes);
