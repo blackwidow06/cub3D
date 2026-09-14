@@ -21,7 +21,7 @@
 - [ ] Hauteur des murs
 
 ## Rendering
-- [ ] Initialiser MLX
+- [ ] Initialiser MLX -> marco
 - [ ] Créer image
 - [ ] Dessiner pixels
 - [ ] Textures

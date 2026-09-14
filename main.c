@@ -3,26 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 14:12:59 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/14 10:24:30 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	exit_game(t_game *game)
-{
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	exit(0);
-}
-
 int    key_press(int keycode, t_game *game)
 {
     if (keycode == KEY_ESC)
-        exit_game(game);
+        exit_game(game, "Exit game\n");
     return (0);
 }
 
@@ -42,40 +35,19 @@ int    key_press(int keycode, t_game *game)
 //	return (0);
 //}
 
-//int	main(int argc, char **argv)
-//{
-//	if (argc != 2)
-//		return (1);
-//	read_map(argv[1]);
-//	return (0);
-//}
-
 int	main(int argc, char **argv)
 {
 	t_texture	texture;
+	t_game		game;
 
-	if (argc != 2)
-		return (1);
-	if (check_map_file(argv[1]) != 0)
-	{
-		printf("Error : file .cub invalid\n");
-		return (1);	
-	}
-	init_texture(&texture);
-	if (read_map(argv[1], &texture) != 0)
-		return (1);
-	if (check_textures(&texture) != 0)
-	{
-		printf("Error : invalid texture\n");
-		return (1);
-	}
-	printf("Nord : %s", texture.north);
-	printf("Sud : %s", texture.south);
-	printf("Ouest : %s", texture.west);
-	printf("Est : %s", texture.east);
-	free(texture.north);
-	free(texture.south);
-	free(texture.west);
-	free(texture.east);
-	return (0);
+ 	if (argc != 2)
+ 		return (1);
+ 	init_texture(&texture);		
+ 	init_game(&game);
+ 	parsing(argv[1], &texture, &game);
+ 	free(texture.north);
+ 	free(texture.south);
+ 	free(texture.west);
+ 	free(texture.east);
+ 	return (0);
 }

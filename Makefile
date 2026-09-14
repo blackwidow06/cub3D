@@ -6,7 +6,7 @@
 #    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/14 09:49:23 by malavaud         ###   ########.fr        #
+#    Updated: 2026/09/14 10:16:05 by malavaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,11 @@ CFLAGS      = -Wall -Wextra -Werror
 SRCS        = main.c \
               parsing/check_textures.c \
 			  parsing/read_map.c \
+			  parsing/parsing.c \
               get_next_line/get_next_line.c \
               get_next_line/get_next_line_utils.c \
 			  init_struct.c \
+			  error.c \
 
 OBJS        = $(SRCS:.c=.o)
 
