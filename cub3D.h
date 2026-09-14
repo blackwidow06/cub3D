@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/12 14:12:44 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/14 09:53:32 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,15 @@ typedef	struct s_player
 	
 }			t_player;
 
-/*read_map.c*/
-int	read_map(char *filename, t_texture *texture);
+/*parsing/check_texture.c*/
+void	remove_newline(char *line);
 int	check_map_file(char *filename);
 int	check_textures(t_texture *texture);
 
+/*pasing/read_map.c*/
+int	read_map(char *filename, t_texture *texture);
+
+/*init_struct.c*/
 void	init_texture(t_texture *texture);
 
 #endif
