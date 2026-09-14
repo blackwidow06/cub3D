@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 09:47:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 09:50:07 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/14 10:40:34 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	check_texture_extension(char *path)
 		return (1);
 	if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
 	{
-		printf("Error : textures must be .xpm\n");
+		printf("Error\nTextures must be .xpm\n");
 		return (1);
 	}
 	return (0);

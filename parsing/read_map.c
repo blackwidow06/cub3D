@@ -6,18 +6,24 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 09:45:29 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 09:48:20 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/14 11:07:14 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	parse_textures(char **texture, char *line) /*pas de textures doublon*/
+static int	parse_textures(char **texture, char *line)
 {
 	if (*texture != NULL)
+	{
+		printf("Error\nDuplicate texture\n");
 		return (1);
+	}
 	if (line[3] == '\0')
+	{
+		printf("Error\nEmpty texture path\n");
 		return (1);
+	}
 	*texture = ft_strdup(line + 3);
 	if (*texture == NULL)
 		return (1);
