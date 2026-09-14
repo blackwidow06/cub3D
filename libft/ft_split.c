@@ -6,13 +6,13 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:13:51 by malavaud          #+#    #+#             */
-/*   Updated: 2025/10/20 11:55:22 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:23:47 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	free_split(char **tab, int count)
+void	free_split(char **tab, int count)
 {
 	int	i;
 

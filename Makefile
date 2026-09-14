@@ -6,7 +6,7 @@
 #    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/14 10:16:05 by malavaud         ###   ########.fr        #
+#    Updated: 2026/09/14 12:29:11 by malavaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS        = main.c \
               parsing/check_textures.c \
 			  parsing/read_map.c \
 			  parsing/parsing.c \
+			  parsing/check_colors.c \
               get_next_line/get_next_line.c \
               get_next_line/get_next_line_utils.c \
 			  init_struct.c \

@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:28:37 by malavaud          #+#    #+#             */
-/*   Updated: 2025/10/24 18:08:24 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:24:04 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*ft_itoa(int n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+void	free_split(char **tab, int count);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putstr_fd(char *str, int fd);
 void	ft_putnbr_fd(int n, int fd);

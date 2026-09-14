@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 10:19:16 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:21:51 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,12 @@ int	read_map(char *filename, t_texture *texture);
 
 /*parsing/parsing.c*/
 int	parsing(char *filename, t_texture *texture, t_game *game);
+
+/*parsing/check_colors.c*/
+int	parse_colors(t_texture *texture, char *line);
+int	check_colors(char **color, char *line);
+int	check_all_colors(t_texture *texture);
+int	check_rgb(char *color);
 
 /*init_struct.c*/
 void	init_texture(t_texture *texture);

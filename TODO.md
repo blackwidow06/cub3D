@@ -1,7 +1,6 @@
 # Cub3D TODO
 
 ## Parsing
-- [ ] Parser couleurs
 - [ ] Parser map
 - [ ] Valider map fermée
 - [ ] Gérer erreurs

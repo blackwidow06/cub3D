@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 09:47:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 10:40:34 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/14 13:30:47 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_map_file(char *filename)
 {
-	int len;
+	int	len;
 	int	fd;
 
 	len = ft_strlen(filename);
