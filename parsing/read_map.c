@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 09:45:29 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 11:07:14 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/14 12:45:55 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,22 @@ static int	parse_textures(char **texture, char *line)
 	return (0);
 }
 
+static int	parse_line(char *line, t_texture *texture)
+{
+	if (ft_strncmp(line, "NO ", 3) == 0)
+		return (parse_textures(&texture->north, line));
+	else if (ft_strncmp(line, "SO ", 3) == 0)
+		return (parse_textures(&texture->south, line));
+	else if (ft_strncmp(line, "WE ", 3) == 0)
+		return (parse_textures(&texture->west, line));
+	else if (ft_strncmp(line, "EA ", 3) == 0)
+		return (parse_textures(&texture->east, line));
+	else if (ft_strncmp(line, "F ", 2) == 0
+		|| ft_strncmp(line, "C ", 2) == 0)
+		return (parse_colors(texture, line));
+	return (0);
+}
+
 int	read_map(char *filename, t_texture *texture)
 {
 	int		fd;
@@ -42,41 +58,11 @@ int	read_map(char *filename, t_texture *texture)
 	while (line != NULL)
 	{
 		remove_newline(line);
-		if (ft_strncmp(line, "NO ", 3) == 0)
+		if (parse_line(line, texture) != 0)
 		{
-			if (parse_textures(&texture->north, line) != 0)
-			{
-				free(line);
-				close(fd);
-				return (1);
-			}
-		}
-		else if (ft_strncmp(line, "SO ", 3) == 0)
-		{
-			if (parse_textures(&texture->south, line) != 0)
-			{
-				free(line);
-				close(fd);
-				return (1);
-			}
-		}
-		else if (ft_strncmp(line, "WE ", 3) == 0)
-		{
-			if (parse_textures(&texture->west, line) != 0)
-			{
-				free(line);
-				close(fd);
-				return (1);
-			}
-		}
-		else if (ft_strncmp(line, "EA ", 3) == 0)
-		{
-			if (parse_textures(&texture->east, line) != 0)
-			{
-				free(line);
-				close(fd);
-				return (1);
-			}
+			free(line);
+			close(fd);
+			return (1);
 		}
 		free(line);
 		line = get_next_line(fd);
