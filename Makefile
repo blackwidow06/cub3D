@@ -6,7 +6,7 @@
 #    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/14 14:00:11 by mrojouan         ###   ########.fr        #
+#    Updated: 2026/09/14 16:06:18 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS        = main.c \
 			  init_struct.c \
 			  error.c \
 			  game/game.c \
+			  game/draw_map.c \
 
 OBJS        = $(SRCS:.c=.o)
 

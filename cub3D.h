@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 14:01:24 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/14 16:05:57 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,11 @@ int	check_rgb(char *color);
 void	init_texture(t_texture *texture);
 void	init_game(t_game *game);
 
-/*gam/game.c*/
+/*game/game.c*/
 int	open_game(t_game *game);
+
+/*game/draw_map.c*/
+void draw_map_2d(t_game *game);
 
 /*error.c*/
 int	exit_game(t_game *game, char *end_mes);
