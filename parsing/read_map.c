@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 09:45:29 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 12:45:55 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:06:00 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,39 @@ static int	parse_textures(char **texture, char *line)
 		printf("Error\nDuplicate texture\n");
 		return (1);
 	}
-	if (line[3] == '\0')
+	line += 2;
+	line = skip_spaces(line);
+	if (*line == '\0')
 	{
 		printf("Error\nEmpty texture path\n");
 		return (1);
 	}
-	*texture = ft_strdup(line + 3);
+	*texture = ft_strdup(line);
 	if (*texture == NULL)
 		return (1);
 	return (0);
 }
 
+static int	parse_colors(t_texture *texture, char *line)
+{
+	if (line[0] == 'F'
+		&& (line[1] == ' ' || line[1] == '\t'))
+		return (check_colors(&texture->floor, line));
+	else if (line[0] == 'C'
+		&& (line[1] == ' ' || line[1] == '\t'))
+		return (check_colors(&texture->ceiling, line));
+	return (0);
+}
+
 static int	parse_line(char *line, t_texture *texture)
 {
-	if (ft_strncmp(line, "NO ", 3) == 0)
+	if (ft_strncmp(line, "NO", 2) == 0)
 		return (parse_textures(&texture->north, line));
-	else if (ft_strncmp(line, "SO ", 3) == 0)
+	else if (ft_strncmp(line, "SO", 2) == 0)
 		return (parse_textures(&texture->south, line));
-	else if (ft_strncmp(line, "WE ", 3) == 0)
+	else if (ft_strncmp(line, "WE", 2) == 0)
 		return (parse_textures(&texture->west, line));
-	else if (ft_strncmp(line, "EA ", 3) == 0)
+	else if (ft_strncmp(line, "EA", 2) == 0)
 		return (parse_textures(&texture->east, line));
 	else if (ft_strncmp(line, "F ", 2) == 0
 		|| ft_strncmp(line, "C ", 2) == 0)

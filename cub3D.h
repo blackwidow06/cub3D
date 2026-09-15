@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 11:27:54 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:38:16 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,29 @@ int		check_textures(t_texture *texture);
 int		read_map(char *filename, t_texture *texture);
 
 /*parsing/parsing.c*/
-int	parsing(char *filename, t_game *game);
+int		parsing(char *filename, t_game *game);
 
 /*parsing/check_colors.c*/
-int	parse_colors(t_texture *texture, char *line);
-int	check_colors(char **color, char *line);
-int	check_all_colors(t_texture *texture);
-int	check_rgb(char *color);
+int		check_colors(char **color, char *line);
+int		check_all_colors(t_texture *texture);
+int		check_rgb(char *color);
+
+/*parsing/read_map_grid.c*/
+int		read_map_grid(char *filename, t_map *map);
+
+/*parsing/check_map_utils.c*/
+int		check_map_characters(t_map *map);
+int		check_player_count(t_map *map);
+int		is_map_line(char *line);
+
+/*parsing/check_map_walls.c*/
+int		check_map_walls(t_map *map);
+
+/*parsing/utils.c*/
+char	*skip_spaces(char *str);
+void	remove_newline(char *line);
+int		get_map_width(t_map *map);
+
 
 /*init_struct.c*/
 void	init_texture(t_texture *texture);
@@ -118,6 +134,6 @@ void	move_left_right(t_game *game, double direction);
 void	rotate_player(t_game *game, double angle);
 
 /*error.c*/
-int	exit_game(t_game *game, char *end_mes);
+int		exit_game(t_game *game, char *end_mes);
 
 #endif
