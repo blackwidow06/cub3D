@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:46:38 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:51:49 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define KEY_A 97
 # define KEY_D 100
 
-
 typedef struct s_texture
 {
 	char		*north;
@@ -36,26 +35,25 @@ typedef struct s_texture
 	char		*east;
 	char		*ceiling;
 	char		*floor;
-	
+
 }				t_texture;
 
-typedef	struct s_map
+typedef struct s_map
 {
 	char		**grid;
 	int			width;
 	int			height;
-	
+
 }				t_map;
 
-typedef	struct s_player
+typedef struct s_player
 {
 	double		x; /*placement*/
 	double		y;
-	double 		dir_x; /*regard du joueur hori*/
+	double		dir_x; /*regard du joueur hori*/
 	double		dir_y; /*regard du joueur verti*/
 	double		plane_x; /*largeur de la camera hori*/
 	double		plane_y; /*largeur de la camera verti*/
-	
 }				t_player;
 
 typedef struct s_game
@@ -98,7 +96,6 @@ int		check_map_walls(t_map *map);
 char	*skip_spaces(char *str);
 void	remove_newline(char *line);
 int		get_map_width(t_map *map);
-
 
 /*init_struct.c*/
 void	init_texture(t_texture *texture);
