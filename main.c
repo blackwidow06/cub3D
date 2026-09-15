@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 14:00:05 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 10:16:50 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ int	main(int argc, char **argv)
 
  	if (argc != 2)
  		return (1);
- 	init_texture(&game.textures);		
- 	init_game(&game);
+		
+	init_game(&game);
+	init_texture(&game.textures);		
+	init_player(&game.player);
  	parsing(argv[1], &game);
 	open_game(&game);
  	free(game.textures.north);

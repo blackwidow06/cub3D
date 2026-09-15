@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 16:05:57 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 11:27:54 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <math.h>
 
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_S 115
 # define KEY_A 97
 # define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 
 typedef struct s_texture
@@ -55,7 +58,8 @@ typedef	struct s_player
 	double	dir_y; /*regard du joueur verti*/
 	double	plane_x; /*largeur de la camera hori*/
 	double	plane_y; /*largeur de la camera verti*/
-	
+	double	move_speed;
+    double	rot_speed;
 }			t_player;
 
 typedef struct s_image
@@ -72,6 +76,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*window;
 
+	t_player	player;
 	t_texture	textures;
 	t_image		image;
 	t_map 		map;
@@ -80,11 +85,11 @@ typedef struct s_game
 
 /*parsing/check_texture.c*/
 void	remove_newline(char *line);
-int	check_map_file(char *filename);
-int	check_textures(t_texture *texture);
+int		check_map_file(char *filename);
+int		check_textures(t_texture *texture);
 
 /*pasing/read_map.c*/
-int	read_map(char *filename, t_texture *texture);
+int		read_map(char *filename, t_texture *texture);
 
 /*parsing/parsing.c*/
 int	parsing(char *filename, t_game *game);
@@ -97,13 +102,20 @@ int	check_rgb(char *color);
 
 /*init_struct.c*/
 void	init_texture(t_texture *texture);
+void	init_player(t_player *player);
 void	init_game(t_game *game);
 
 /*game/game.c*/
 int	open_game(t_game *game);
 
 /*game/draw_map.c*/
-void draw_map_2d(t_game *game);
+void	draw_map_2d(t_game *game);
+void	draw_player_direction(t_game *game);
+
+/*game/movement.c*/
+void	move_forward_backward(t_game *game, double direction);
+void	move_left_right(t_game *game, double direction);
+void	rotate_player(t_game *game, double angle);
 
 /*error.c*/
 int	exit_game(t_game *game, char *end_mes);
