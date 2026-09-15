@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:28:16 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 13:30:16 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/15 11:14:41 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	parse_colors(t_texture *texture, char *line)
 {
-	if (ft_strncmp(line, "F ", 2) == 0)
+	if (line[0] == 'F'
+		&& (line[1] == ' ' || line[1] == '\t'))
 		return (check_colors(&texture->floor, line));
-	else if (ft_strncmp(line, "C ", 2) == 0)
+	else if (line[0] == 'C'
+		&& (line[1] == ' ' || line[1] == '\t'))
 		return (check_colors(&texture->ceiling, line));
 	return (0);
 }
@@ -25,14 +27,13 @@ int	check_colors(char **color, char *line)
 {
 	if (*color != NULL)
 		return (1);
-	else if (line[2] == '\0')
+	line++;
+	line = skip_spaces(line);
+	if (*line == '\0')
 		return (1);
-	else
-	{
-		*color = ft_strdup(line + 2);
-		if (*color == NULL)
-			return (1);
-	}
+	*color = ft_strdup(line);
+	if (*color == NULL)
+		return (1);
 	return (0);
 }
 

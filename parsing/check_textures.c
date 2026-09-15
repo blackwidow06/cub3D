@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 09:47:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 13:30:47 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/15 11:30:12 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,6 @@ static int	check_texture_extension(char *path)
 		return (1);
 	}
 	return (0);
-}
-
-void	remove_newline(char *line)
-{
-	int	len;
-
-	len = ft_strlen(line);
-	if (len > 0 && line[len - 1] == '\n')
-		line[len - 1] = '\0';
 }
 
 int	check_textures(t_texture *texture)

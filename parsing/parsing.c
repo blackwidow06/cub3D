@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:11:43 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 13:05:26 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/15 10:20:18 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	parsing(char *filename, t_texture *texture, t_game *game)
 {
+	t_map	map;
+
+	map.grid = NULL;
 	if (check_map_file(filename) != 0)
 		exit_game(game, "Error\nfile .cub invalid\n");
 	if (read_map(filename, texture) != 0)
@@ -22,5 +25,13 @@ int	parsing(char *filename, t_texture *texture, t_game *game)
 		exit_game(game, "Error\nInvalid texture\n");
 	if (check_all_colors(texture) != 0)
 		exit_game(game, "Error\nInvalid color\n");
+	if (read_map_grid(filename, &map) != 0)
+		exit_game(game, "Error\nInvalid map\n");
+	if (check_map_characters(&map) != 0)
+		exit_game(game, "Error\nInvalid map characters\n");
+	if (check_player_count(&map) != 0)
+		exit_game(game, "Error\nInvalid player count\n");
+	if (check_map_walls(&map) != 0)
+		exit_game(game, "Error\nMap not closed\n");
 	return (0);
 }
