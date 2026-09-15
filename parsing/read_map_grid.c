@@ -1,47 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   read_map_grid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 08:15:25 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 10:39:08 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:27:36 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	get_map_width(t_map *map)
+static int	count_map_lines(int fd, t_map *map)
 {
-	int	i;
-	int	len;
-	int	width;
+	char	*line;
+	int		in_map;
 
-	i = 0;
-	width = 0;
-	while (map->grid[i] != NULL)
+	in_map = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		len = ft_strlen(map->grid[i]);
-		if (len > width)
-			width = len;
-		i++;
+		remove_newline(line);
+		if (is_map_line(line) == 1)
+			in_map = 1;
+		if (in_map == 1)
+			map->height++;
+		free(line);
+		line = get_next_line(fd);
 	}
-	return (width);
+	return (0);
 }
 
-static	int	fill_map_grid(char *filename, t_map *map)
+static int	read_map_file(int fd, t_map *map)
 {
-	int		fd;
 	int		i;
 	int		in_map;
 	char	*line;
 
-	in_map = 0;
 	i = 0;
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (1);
+	in_map = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -59,36 +57,39 @@ static	int	fill_map_grid(char *filename, t_map *map)
 		line = get_next_line(fd);
 	}
 	map->grid[i] = NULL;
+	return (0);
+}
+
+static int	fill_map_grid(char *filename, t_map *map)
+{
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (1);
+	if (read_map_file(fd, map) == 1)
+	{
+		close(fd);
+		return (1);
+	}
 	close(fd);
 	return (0);
 }
 
 int	read_map_grid(char *filename, t_map *map)
 {
-	int		fd;
-	int		in_map;
-	char	*line;
-	
-	in_map = 0;
+	int	fd;
+
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (1);
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		remove_newline(line);
-		if (is_map_line(line) == 1)
-			in_map = 1;
-		if (in_map == 1)
-			map->height++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close (fd);
+	if (count_map_lines(fd, map) == 1)
+		return (1);
+	close(fd);
 	map->grid = malloc(sizeof(char *) * (map->height + 1));
 	if (map->grid == NULL)
 		return (1);
-	if (fill_map_grid(filename, map) != 0)
+	if (fill_map_grid(filename, map) == 1)
 		return (1);
 	map->width = get_map_width(map);
 	return (0);

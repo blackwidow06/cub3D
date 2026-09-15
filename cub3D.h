@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 11:41:05 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:30:40 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,11 @@ int		read_map(char *filename, t_texture *texture);
 int		parsing(char *filename, t_texture *texture, t_game *game);
 
 /*parsing/check_colors.c*/
-int		parse_colors(t_texture *texture, char *line);
 int		check_colors(char **color, char *line);
 int		check_all_colors(t_texture *texture);
 int		check_rgb(char *color);
 
-/*parsing/check_map.c*/
+/*parsing/read_map_grid.c*/
 int		read_map_grid(char *filename, t_map *map);
 
 /*parsing/check_map_utils.c*/
@@ -95,6 +94,7 @@ int		check_map_walls(t_map *map);
 /*parsing/utils.c*/
 char	*skip_spaces(char *str);
 void	remove_newline(char *line);
+int		get_map_width(t_map *map);
 
 
 /*init_struct.c*/

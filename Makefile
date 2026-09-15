@@ -6,7 +6,7 @@
 #    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/15 11:37:43 by mrojouan         ###   ########.fr        #
+#    Updated: 2026/09/15 12:30:44 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS      = -Wall -Wextra -Werror -g
 SRCS        = main.c \
               parsing/check_textures.c \
               parsing/read_map.c \
-              parsing/check_map.c \
+              parsing/read_map_grid.c \
 			  parsing/utils.c \
               parsing/check_map_utils.c \
               parsing/check_map_walls.c \

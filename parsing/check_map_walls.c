@@ -6,17 +6,15 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 10:41:58 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 10:42:28 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:11:09 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	check_map_walls(t_map *map)
+static	int	check_top_bottom(t_map *map)
 {
 	int	i;
-	int	j;
-	int	len;
 
 	i = 0;
 	while (map->grid[0][i] != '\0')
@@ -32,6 +30,15 @@ int	check_map_walls(t_map *map)
 			return (1);
 		i++;
 	}
+	return (0);
+}
+
+static	int	check_sides(t_map *map)
+{
+	int	i;
+	int	j;
+	int	len;
+
 	i = 0;
 	while (map->grid[i] != NULL)
 	{
@@ -48,5 +55,14 @@ int	check_map_walls(t_map *map)
 			return (1);
 		i++;
 	}
+	return (0);
+}
+
+int	check_map_walls(t_map *map)
+{
+	if (check_top_bottom(map) == 1)
+		return (1);
+	if (check_sides(map) == 1)
+		return (1);
 	return (0);
 }

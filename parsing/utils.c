@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 11:29:13 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 11:30:00 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:17:21 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,20 @@ void	remove_newline(char *line)
 		line[len - 1] = '\0';
 }
 
+int	get_map_width(t_map *map)
+{
+	int	i;
+	int	len;
+	int	width;
+
+	i = 0;
+	width = 0;
+	while (map->grid[i] != NULL)
+	{
+		len = ft_strlen(map->grid[i]);
+		if (len > width)
+			width = len;
+		i++;
+	}
+	return (width);
+}
