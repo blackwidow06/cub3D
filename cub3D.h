@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:46:38 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:51:20 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "minilibx-linux/mlx.h"
-#include "get_next_line/get_next_line.h"
-#include <libft.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
+# include "minilibx-linux/mlx.h"
+# include "get_next_line/get_next_line.h"
+# include <libft.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
 
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_S 115
 # define KEY_A 97
 # define KEY_D 100
-
 
 typedef struct s_texture
 {
@@ -36,26 +35,26 @@ typedef struct s_texture
 	char		*east;
 	char		*ceiling;
 	char		*floor;
-	
+
 }				t_texture;
 
-typedef	struct s_map
+typedef struct s_map
 {
 	char		**grid;
 	int			width;
 	int			height;
-	
+
 }				t_map;
 
-typedef	struct s_player
+typedef struct s_player
 {
-	double		x; /*placement*/
+	double		x;
 	double		y;
-	double 		dir_x; /*regard du joueur hori*/
-	double		dir_y; /*regard du joueur verti*/
-	double		plane_x; /*largeur de la camera hori*/
-	double		plane_y; /*largeur de la camera verti*/
-	
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+
 }				t_player;
 
 typedef struct s_game
@@ -98,7 +97,6 @@ int		check_map_walls(t_map *map);
 char	*skip_spaces(char *str);
 void	remove_newline(char *line);
 int		get_map_width(t_map *map);
-
 
 /*init_struct.c*/
 void	init_texture(t_texture *texture);
