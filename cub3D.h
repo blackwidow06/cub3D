@@ -6,20 +6,20 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:51:49 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:52:57 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "minilibx-linux/mlx.h"
-#include "get_next_line/get_next_line.h"
-#include <libft.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
+# include "minilibx-linux/mlx.h"
+# include "get_next_line/get_next_line.h"
+# include <libft.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -48,12 +48,13 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	double		x; /*placement*/
+	double		x;
 	double		y;
-	double		dir_x; /*regard du joueur hori*/
-	double		dir_y; /*regard du joueur verti*/
-	double		plane_x; /*largeur de la camera hori*/
-	double		plane_y; /*largeur de la camera verti*/
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+
 }				t_player;
 
 typedef struct s_game
