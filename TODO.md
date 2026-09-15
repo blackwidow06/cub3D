@@ -32,3 +32,24 @@
 - [ ] Mauvaises couleurs
 - [ ] Déplacements contre murs
 - [ ] Segfaults / leaks
+
+raycasting()
+│
+├── Pour chaque colonne x
+│   │
+│   ├── init_ray()
+│   │     └── Où part le rayon ?
+│   │
+│   ├── init_dda()
+│   │     └── Quelle frontière est proche ?
+│   │
+│   ├── cast_single_ray()
+│   │     └── Quel mur est touché ?
+│   │
+│   ├── calculate_wall()
+│   │     └── Quelle hauteur à l'écran ?
+│   │
+│   └── draw_column()
+│         └── Quels pixels dessiner ?
+│
+└── Fin

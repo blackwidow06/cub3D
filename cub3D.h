@@ -6,21 +6,20 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:38:16 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 12:57:08 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "minilibx-linux/mlx.h"
-#include "get_next_line/get_next_line.h"
-#include <libft.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <math.h>
+# include "minilibx-linux/mlx.h"
+# include "get_next_line/get_next_line.h"
+# include <libft.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -29,7 +28,6 @@
 # define KEY_D 100
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
-
 
 typedef struct s_texture
 {
@@ -77,7 +75,7 @@ typedef struct s_game
 	void		*window;
 
 	t_player	player;
-	t_texture	textures;
+	t_texture	texture;
 	t_image		image;
 	t_map 		map;
 
@@ -115,14 +113,13 @@ char	*skip_spaces(char *str);
 void	remove_newline(char *line);
 int		get_map_width(t_map *map);
 
-
 /*init_struct.c*/
 void	init_texture(t_texture *texture);
 void	init_player(t_player *player);
 void	init_game(t_game *game);
 
 /*game/game.c*/
-int	open_game(t_game *game);
+int		open_game(t_game *game);
 
 /*game/draw_map.c*/
 void	draw_map_2d(t_game *game);
