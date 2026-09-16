@@ -6,18 +6,11 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 09:16:36 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/16 10:57:49 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-int    key_press(int keycode, t_game *game)
-{
-    if (keycode == KEY_ESC)
-        exit_game(game, "Exit game\n");
-    return (0);
-}
 
 //int	main(void)
 //{
@@ -37,7 +30,7 @@ int    key_press(int keycode, t_game *game)
 
 int	main(int argc, char **argv)
 {
-	t_game		game;
+	t_game	game;
 	
 	if (argc != 2)
 		return (1);
@@ -45,6 +38,7 @@ int	main(int argc, char **argv)
 	init_map(&game.map);
 	init_game(&game);
 	parsing(argv[1], &game);
+	// open_game(&game);
 	free(game.texture.north);
 	free(game.texture.south);
 	free(game.texture.west);

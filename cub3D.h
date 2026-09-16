@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 09:16:25 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/16 10:16:23 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "minilibx-linux/mlx.h"
 # include "get_next_line/get_next_line.h"
 # include <libft.h>
+# include <math.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
