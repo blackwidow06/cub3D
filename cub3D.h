@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 13:00:08 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/16 09:16:25 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,48 +26,63 @@
 # define KEY_S 115
 # define KEY_A 97
 # define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 typedef struct s_texture
 {
-	char		*north;
-	char		*south;
-	char		*west;
-	char		*east;
-	char		*ceiling;
-	char		*floor;
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+	char	*ceiling;
+	char	*floor;
+	
+}			t_texture;
 
-}				t_texture;
-
-typedef struct s_map
+typedef	struct s_map
 {
-	char		**grid;
-	int			width;
-	int			height;
+	char	**grid;
+	int		width;
+	int		height;
+	
+}			t_map;
 
-}				t_map;
-
-typedef struct s_player
+typedef	struct s_player
 {
-	double		x;
-	double		y;
-	double		dir_x;
-	double		dir_y;
-	double		plane_x;
-	double		plane_y;
+	double	x; /*placement*/
+	double	y;
+	double 	dir_x; /*regard du joueur hori*/
+	double	dir_y; /*regard du joueur verti*/
+	double	plane_x; /*largeur de la camera hori*/
+	double	plane_y; /*largeur de la camera verti*/
+	double	move_speed;
+    double	rot_speed;
+}			t_player;
 
-}				t_player;
+typedef struct s_image
+{
+    void    *img;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}   		t_image;
 
 typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
 
-	t_map		map;
+	t_player	player;
 	t_texture	texture;
+	t_image		image;
+	t_map 		map;
 
-}				t_game;
+}			t_game;
 
 /*parsing/check_texture.c*/
+void	remove_newline(char *line);
 int		check_map_file(char *filename);
 int		check_textures(t_texture *texture);
 
@@ -100,8 +115,21 @@ int		get_map_width(t_map *map);
 
 /*init_struct.c*/
 void	init_texture(t_texture *texture);
+void	init_player(t_player *player);
 void	init_game(t_game *game);
 void	init_map(t_map *map);
+
+/*game/game.c*/
+int		open_game(t_game *game);
+
+/*game/draw_map.c*/
+void	draw_map_2d(t_game *game);
+void	draw_player_direction(t_game *game);
+
+/*game/movement.c*/
+void	move_forward_backward(t_game *game, double direction);
+void	move_left_right(t_game *game, double direction);
+void	rotate_player(t_game *game, double angle);
 
 /*error.c*/
 int		exit_game(t_game *game, char *end_mes);

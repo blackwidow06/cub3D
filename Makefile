@@ -6,7 +6,7 @@
 #    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/15 12:30:44 by mrojouan         ###   ########.fr        #
+#    Updated: 2026/09/15 12:56:53 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,11 @@ SRCS        = main.c \
               parsing/check_colors.c \
               get_next_line/get_next_line.c \
               get_next_line/get_next_line_utils.c \
-              init_struct.c \
-              error.c
+			  init_struct.c \
+			  error.c \
+			  game/game.c \
+			  game/draw_map.c \
+			  game/movement.c \
 
 OBJ_DIR     = obj
 
