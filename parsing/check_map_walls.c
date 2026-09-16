@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 10:41:58 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:11:09 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/16 09:00:11 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,40 @@ static	int	check_top_bottom(t_map *map)
 	return (0);
 }
 
-static	int	check_sides(t_map *map)
+static int	check_extra_walls(char *line, char *other)
 {
 	int	i;
-	int	j;
+	int	len;
+
+	i = ft_strlen(other);
+	len = ft_strlen(line);
+	while (i < len)
+	{
+		if (line[i] != '1')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static int	check_sides(t_map *map)
+{
+	int	i;
 	int	len;
 
 	i = 0;
 	while (map->grid[i] != NULL)
 	{
 		len = ft_strlen(map->grid[i]);
-		if (map->grid[i][0] != '1')
+		if (len == 0 || map->grid[i][0] != '1')
 			return (1);
-		j = len - 1;
-		if (map->grid[i][j] != '1')
+		if (map->grid[i][len - 1] != '1')
 			return (1);
-		if (i > 0 && len > (int)ft_strlen(map->grid[i - 1]))
+		if (i > 0
+			&& check_extra_walls(map->grid[i], map->grid[i - 1]) != 0)
 			return (1);
 		if (map->grid[i + 1] != NULL
-			&& len > (int)ft_strlen(map->grid[i + 1]))
+			&& check_extra_walls(map->grid[i], map->grid[i + 1]) != 0)
 			return (1);
 		i++;
 	}
