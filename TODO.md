@@ -5,11 +5,8 @@
 - [ ] Gérer erreurs
 
 ## Player
-- [ ] Trouver position initiale
-- [ ] Définir direction
-- [ ] Déplacement avant/arrière
-- [ ] Rotation gauche/droite
-- [ ] Collision
+- [ ] Trouver position initiale PENDING
+- [ ] Définir direction PENDING
 
 ## Raycasting
 - [ ] Camera plane
@@ -19,9 +16,9 @@
 - [ ] Hauteur des murs
 
 ## Rendering
-- [ ] Initialiser MLX -> marco
-- [ ] Créer image
-- [ ] Dessiner pixels
+- [ ] Initialiser MLX -> marco PENDING
+- [ ] Créer image PENDING
+- [ ] Dessiner pixels PENDING
 - [ ] Textures
 - [ ] Floor / ceiling
 

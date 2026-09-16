@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 10:54:55 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/16 11:48:59 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int    main(int argc, char **argv)
 	init_map(&game.map);
 	init_game(&game);
 	parsing(argv[1], &game);
+	// open_game(&game);
 	free(game.texture.north);
 	free(game.texture.south);
 	free(game.texture.west);
