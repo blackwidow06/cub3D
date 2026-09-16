@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 10:57:49 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/16 11:48:59 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 //	return (0);
 //}
 
-int	main(int argc, char **argv)
+int    main(int argc, char **argv)
 {
 	t_game	game;
 	

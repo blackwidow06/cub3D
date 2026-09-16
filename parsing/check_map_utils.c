@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 10:28:45 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:28:38 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/16 11:59:55 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 static	int	is_valid_map_char(char c)
 {
 	if (c == '0' || c == '1' || c == 'N'
-		|| c == 'S' || c == 'E' || c == 'W')
+		|| c == 'S' || c == 'E' || c == 'W'
+		|| c == ' ')
 		return (1);
 	return (0);
 }
 
 int	check_map_characters(t_map *map)
 {
-	int	i;
-	int	j;
+	int    i;
+	int    j;
 
 	i = 0;
 	while (map->grid[i] != NULL)
@@ -81,8 +82,9 @@ int	is_map_line(char *line)
 	while (line[i])
 	{
 		if (line[i] != '0' && line[i] != '1'
-			&& line[i] != 'N' && line[i] != 'S'
-			&& line[i] != 'E' && line[i] != 'W')
+				&& line[i] != 'N' && line[i] != 'S'
+				&& line[i] != 'E' && line[i] != 'W'
+				&& line[i] != ' ')
 			return (0);
 		i++;
 	}
