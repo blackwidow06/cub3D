@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/14 15:35:35 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/16 11:05:01 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	exit_game(t_game *game, char *end_mes)
 	{
 		if (game->image.img)
 			mlx_destroy_image(game->mlx, game->image.img);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
 	}
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
 	if (end_mes)
 		printf("%s", end_mes);
 	exit(0);

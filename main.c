@@ -6,18 +6,11 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 09:51:37 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/16 10:54:55 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-int    key_press(int keycode, t_game *game)
-{
-	if (keycode == KEY_ESC)
-		exit_game(game, "Exit game\n");
-	return (0);
-}
 
 //int	main(void)
 //{
