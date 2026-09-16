@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 12:44:54 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/14 10:20:10 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/16 14:32:37 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	init_player(t_player *player)
 	player->y = 0;
 	player->dir_x = 0;
 	player->dir_y = 0;
-	player->plane_x = 0;
-	player->plane_y = 0;
+	player->move_speed = 0.05;
+	player->rot_speed = 0.05;
 }
 
 void	init_texture(t_texture *texture)

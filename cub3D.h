@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 11:48:54 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/16 14:56:44 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ int		read_map(char *filename, t_texture *texture);
 
 /*parsing/parsing.c*/
 int		parsing(char *filename, t_game *game);
+
+/*parsing/parse_player.c*/
+int		parse_player(t_game *game);
 
 /*parsing/check_colors.c*/
 int		check_colors(char **color, char *line);

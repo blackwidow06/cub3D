@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 11:48:59 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/16 15:33:27 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ int    main(int argc, char **argv)
 	if (argc != 2)
 		return (1);
 	init_texture(&game.texture);
+	init_player(&game.player);
 	init_map(&game.map);
 	init_game(&game);
 	parsing(argv[1], &game);
-	// open_game(&game);
+	open_game(&game);
 	free(game.texture.north);
 	free(game.texture.south);
 	free(game.texture.west);
