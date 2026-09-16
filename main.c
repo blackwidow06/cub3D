@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:43:18 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 13:12:00 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ int    key_press(int keycode, t_game *game)
 
 int	main(int argc, char **argv)
 {
-	t_texture	texture;
 	t_game		game;
-
- 	if (argc != 2)
- 		return (1);
- 	init_texture(&texture);		
- 	init_game(&game);
- 	parsing(argv[1], &game);
- 	free(texture.north);
- 	free(texture.south);
- 	free(texture.west);
- 	free(texture.east);
- 	return (0);
+	
+	if (argc != 2)
+		return (1);
+	init_texture(&game.texture);
+	init_map(&game.map);
+	init_game(&game);
+	parsing(argv[1], &game);
+	free(game.texture.north);
+	free(game.texture.south);
+	free(game.texture.west);
+	free(game.texture.east);
+	return (0);
 }

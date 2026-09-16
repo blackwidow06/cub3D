@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:52:57 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/15 13:00:08 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int		get_map_width(t_map *map);
 /*init_struct.c*/
 void	init_texture(t_texture *texture);
 void	init_game(t_game *game);
+void	init_map(t_map *map);
 
 /*error.c*/
 int		exit_game(t_game *game, char *end_mes);
