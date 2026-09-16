@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:30:50 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/15 11:25:04 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/16 09:35:14 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	open_game(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (1);
+	
 	game->window = mlx_new_window(game->mlx, 1280, 720, "Cub3D");
 	if (!game->window)
 		return (1);
