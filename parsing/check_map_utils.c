@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 10:28:45 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 11:36:49 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/16 11:59:55 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static	int	is_valid_map_char(char c)
 {
 	if (c == '0' || c == '1' || c == 'N'
-		|| c == 'S' || c == 'E' || c == 'W')
+		|| c == 'S' || c == 'E' || c == 'W'
+		|| c == ' ')
 		return (1);
 	return (0);
 }
@@ -82,7 +83,8 @@ int	is_map_line(char *line)
 	{
 		if (line[i] != '0' && line[i] != '1'
 				&& line[i] != 'N' && line[i] != 'S'
-				&& line[i] != 'E' && line[i] != 'W')
+				&& line[i] != 'E' && line[i] != 'W'
+				&& line[i] != ' ')
 			return (0);
 		i++;
 	}

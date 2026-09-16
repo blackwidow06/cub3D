@@ -1,8 +1,7 @@
 # Cub3D TODO
 
 ## Parsing
-- [ ] Valider map fermée
-- [ ] Gérer erreurs
+- [ ] Gerer les trous
 
 ## Player
 - [ ] Trouver position initiale PENDING

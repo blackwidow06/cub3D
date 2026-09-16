@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 10:41:58 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 11:48:34 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/16 11:52:09 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,6 @@ static    int    check_sides(t_map *map)
 		j = len - 1;
 		if (map->grid[i][j] != '1')
 			return (1);
-		// if (i > 0 && len > (int)ft_strlen(map->grid[i - 1]))
-		// 	return (1);
-		// if (map->grid[i + 1] != NULL
-		// 	&& len > (int)ft_strlen(map->grid[i + 1]))
-		// 	return (1);
 		i++;
 	}
 	return (0);
