@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 15:54:31 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/15 11:30:18 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/17 17:25:47 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,29 @@ void	put_pixel(t_image *img, int x, int y, int color)
 	dst = img->addr + (y * img->line_length
 			+ x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+void	draw_background(t_game *game)
+{
+	int	x;
+	int	y;
+	int	color;
+
+	y = 0;
+	while (y < 720)
+	{
+		if (y < 720 / 2)
+			color = game->ceiling_rgb;
+		else
+			color = game->floor_rgb;
+		x = 0;
+		while (x < 1280)
+		{
+			put_pixel(&game->image, x, y, color);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	draw_square(t_image *img, int start_x, int start_y,

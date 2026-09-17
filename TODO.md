@@ -3,10 +3,6 @@
 ## Parsing
 - [ ] Gerer les trous
 
-## Player
-- [ ] Trouver position initiale PENDING
-- [ ] Définir direction PENDING
-
 ## Raycasting
 - [ ] Camera plane
 - [ ] Ray direction

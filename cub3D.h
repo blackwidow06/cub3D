@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 14:56:44 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/17 17:23:44 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,14 @@ typedef struct s_game
 	void		*mlx;
 	void		*window;
 
+	int			floor_rgb;
+	int			ceiling_rgb;
+	
 	t_player	player;
 	t_texture	texture;
 	t_image		image;
 	t_map 		map;
-
+	
 }			t_game;
 
 /*parsing/check_texture.c*/
@@ -96,6 +99,9 @@ int		parsing(char *filename, t_game *game);
 
 /*parsing/parse_player.c*/
 int		parse_player(t_game *game);
+
+/*parsing/parse.color.c*/
+int	parse_color(t_game *game);
 
 /*parsing/check_colors.c*/
 int		check_colors(char **color, char *line);
@@ -130,6 +136,7 @@ int		open_game(t_game *game);
 /*game/draw_map.c*/
 void	draw_map_2d(t_game *game);
 void	draw_player_direction(t_game *game);
+void	draw_background(t_game *game);
 
 /*game/movement.c*/
 void	move_forward_backward(t_game *game, double direction);
