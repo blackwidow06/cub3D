@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 14:56:44 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/18 09:45:13 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,47 +31,68 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 
-typedef struct s_texture
+typedef struct	s_texture
 {
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	char	*ceiling;
-	char	*floor;
+	char		*north;
+	char		*south;
+	char		*west;
+	char		*east;
+	char		*ceiling;
+	char		*floor;
 	
 }			t_texture;
 
-typedef	struct s_map
+typedef struct	s_map
 {
-	char	**grid;
-	int		width;
-	int		height;
+	char		**grid;
+	int			width;
+	int			height;
 	
 }			t_map;
 
-typedef	struct s_player
+typedef struct	s_player
 {
-	double	x; /*placement*/
-	double	y;
-	double 	dir_x; /*regard du joueur hori*/
-	double	dir_y; /*regard du joueur verti*/
-	double	plane_x; /*largeur de la camera hori*/
-	double	plane_y; /*largeur de la camera verti*/
-	double	move_speed;
-    double	rot_speed;
+	double		x; /*placement*/
+	double		y;
+	double		dir_x; /*regard du joueur hori*/
+	double		dir_y; /*regard du joueur verti*/
+	double		plane_x; /*largeur de la camera hori*/
+	double		plane_y; /*largeur de la camera verti*/
+	double		move_speed;
+	double		rot_speed;
+	
 }			t_player;
 
-typedef struct s_image
+typedef struct	s_ray
 {
-    void    *img;
-    char    *addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-}   		t_image;
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_double_y;
+	int			map_x;
+	int			map_y;
+	int			step_X;
+	int			step_y;
+	double		delta_dist_x; /*distance pour atteindre la next front*/
+	double		delta_dist_y;
+	double		wall_dist;
+	int			side;
+	int			line_heigth;
+	int			draw_start;
+	int			draw_end;
+	
+}			t_ray;
 
-typedef struct s_game
+typedef struct	s_image
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	
+}			t_image;
+
+typedef struct	s_game
 {
 	void		*mlx;
 	void		*window;
@@ -80,6 +101,7 @@ typedef struct s_game
 	t_texture	texture;
 	t_image		image;
 	t_map 		map;
+	t_ray		ray;
 
 }			t_game;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 15:54:31 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/15 11:30:18 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/17 09:23:26 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	put_pixel(t_image *img, int x, int y, int color)
 {
-	char	*dst;
+	char	*dest;
 
-	dst = img->addr + (y * img->line_length
+	dest = img->addr + (y * img->line_length
 			+ x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	*(unsigned int *)dest = color;
 }
 
 void	draw_square(t_image *img, int start_x, int start_y,

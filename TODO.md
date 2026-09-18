@@ -1,11 +1,7 @@
 # Cub3D TODO
 
-## Parsing
+## Parsing map
 - [ ] Gerer les trous
-
-## Player
-- [ ] Trouver position initiale PENDING
-- [ ] Définir direction PENDING
 
 ## Raycasting
 - [ ] Camera plane
