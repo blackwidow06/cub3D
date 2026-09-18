@@ -6,7 +6,7 @@
 #    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/16 15:01:19 by mrojouan         ###   ########.fr        #
+#    Updated: 2026/09/17 17:23:56 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS        = main.c \
               parsing/parsing.c \
               parsing/check_colors.c \
 			  parsing/parse_player.c \
+			  parsing/parse_color.c \
               get_next_line/get_next_line.c \
               get_next_line/get_next_line_utils.c \
 			  init_struct.c \

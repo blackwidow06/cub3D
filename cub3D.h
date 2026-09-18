@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 14:56:44 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/18 09:47:55 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,53 +33,56 @@
 
 typedef struct s_texture
 {
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	char	*ceiling;
-	char	*floor;
-	
+	char		*north;
+	char		*south;
+	char		*west;
+	char		*east;
+	char		*ceiling;
+	char		*floor;
+
 }			t_texture;
 
-typedef	struct s_map
+typedef struct s_map
 {
-	char	**grid;
-	int		width;
-	int		height;
-	
+	char		**grid;
+	int			width;
+	int			height;
+
 }			t_map;
 
-typedef	struct s_player
+typedef struct s_player
 {
-	double	x; /*placement*/
-	double	y;
-	double 	dir_x; /*regard du joueur hori*/
-	double	dir_y; /*regard du joueur verti*/
-	double	plane_x; /*largeur de la camera hori*/
-	double	plane_y; /*largeur de la camera verti*/
-	double	move_speed;
-    double	rot_speed;
+	double		x; /*placement*/
+	double		y;
+	double		dir_x; /*regard du joueur hori*/
+	double		dir_y; /*regard du joueur verti*/
+	double		plane_x; /*largeur de la camera hori*/
+	double		plane_y; /*largeur de la camera verti*/
+	double		move_speed;
+	double		rot_speed;
 }			t_player;
 
 typedef struct s_image
 {
-    void    *img;
-    char    *addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-}   		t_image;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}			t_image;
 
 typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
 
+	int			floor_rgb;
+	int			ceiling_rgb;
+
 	t_player	player;
 	t_texture	texture;
 	t_image		image;
-	t_map 		map;
+	t_map		map;
 
 }			t_game;
 
@@ -96,6 +99,9 @@ int		parsing(char *filename, t_game *game);
 
 /*parsing/parse_player.c*/
 int		parse_player(t_game *game);
+
+/*parsing/parse.color.c*/
+int		parse_color(t_game *game);
 
 /*parsing/check_colors.c*/
 int		check_colors(char **color, char *line);
@@ -130,6 +136,7 @@ int		open_game(t_game *game);
 /*game/draw_map.c*/
 void	draw_map_2d(t_game *game);
 void	draw_player_direction(t_game *game);
+void	draw_background(t_game *game);
 
 /*game/movement.c*/
 void	move_forward_backward(t_game *game, double direction);

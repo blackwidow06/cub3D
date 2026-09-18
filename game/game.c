@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:30:50 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/16 15:39:15 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/17 11:43:59 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	key_press(int keycode, t_game *game)
 		rotate_player(game, -game->player.rot_speed);
 	if (keycode == KEY_RIGHT)
 		rotate_player(game, game->player.rot_speed);
+	draw_background(game);
 	draw_map_2d(game);
 	draw_player_direction(game);
 	mlx_put_image_to_window(game->mlx, game->window,
@@ -49,6 +50,7 @@ int	open_game(t_game *game)
 			&game->image.bits_per_pixel,
 			&game->image.line_length,
 			&game->image.endian);
+	draw_background(game);
 	draw_map_2d(game);
 	draw_player_direction(game);
 	mlx_put_image_to_window(
