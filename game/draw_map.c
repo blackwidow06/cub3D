@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 15:54:31 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/17 17:25:47 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/18 09:52:59 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	draw_tile(t_game *game, int x, int y, char tile)
 		|| tile == 'E' || tile == 'W')
 		color = 0x202020;
 	else
-		return;
+		return ;
 	draw_square(&game->image,
 		x * 64,
 		y * 64,
@@ -112,7 +112,6 @@ void	draw_player_direction(t_game *game)
 
 	start_x = (int)(game->player.x * 64);
 	start_y = (int)(game->player.y * 64);
-
 	i = 0;
 	while (i < 64)
 	{
