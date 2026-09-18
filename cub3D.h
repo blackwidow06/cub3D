@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/18 09:47:55 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/18 11:41:29 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_image
 	char		*addr;
 	int			bits_per_pixel;
 	int			line_length;
-	int			endian;
+	int			byte_order;
 }			t_image;
 
 typedef struct s_game

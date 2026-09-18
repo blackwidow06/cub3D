@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:30:50 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/17 11:43:59 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/18 11:41:43 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	open_game(t_game *game)
 			game->image.img,
 			&game->image.bits_per_pixel,
 			&game->image.line_length,
-			&game->image.endian);
+			&game->image.byte_order);
 	draw_background(game);
 	draw_map_2d(game);
 	draw_player_direction(game);
