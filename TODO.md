@@ -1,13 +1,13 @@
 # Cub3D TODO
 
 ## Parsing
-- [ ] Gerer les trous
+- [ ] Gestion des trous PENDING
 
-## Raycasting
-- [ ] Camera plane
-- [ ] Ray direction
+## Raycasting EN COURS D'AQUISITION
+- [ ] Camera plane 
+- [ ] Ray direction 
 - [ ] DDA
-- [ ] Distance perpendiculaire
+- [ ] Distance perpendiculaire 
 - [ ] Hauteur des murs
 
 ## Rendering
