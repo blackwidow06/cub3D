@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/18 09:59:24 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/18 11:03:47 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define KEY_D 100
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+
+#define	WIN_WIDTH 1280
 
 typedef struct	s_texture
 {
@@ -66,7 +68,7 @@ typedef struct	s_ray
 {
 	double		camera_x;
 	double		ray_dir_x;
-	double		ray_double_y;
+	double		ray_dir_y;
 	int			map_x;
 	int			map_y;
 	int			step_X;
