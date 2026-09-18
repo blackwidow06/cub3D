@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:11:43 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 14:58:34 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/17 17:22:37 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ int	parsing(char *filename, t_game *game)
 		exit_game(game, "Error\nMap not closed\n");
 	if (parse_player(game) != 0)
 		exit_game(game, "Error\nInvalid Player\n");
+	if (parse_color(game) != 0)
+		exit_game(game, "Error\nInvalid color\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 15:54:31 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/17 09:23:26 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/18 09:59:31 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,29 @@ void	put_pixel(t_image *img, int x, int y, int color)
 	dest = img->addr + (y * img->line_length
 			+ x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dest = color;
+}
+
+void	draw_background(t_game *game)
+{
+	int	x;
+	int	y;
+	int	color;
+
+	y = 0;
+	while (y < 720)
+	{
+		if (y < 720 / 2)
+			color = game->ceiling_rgb;
+		else
+			color = game->floor_rgb;
+		x = 0;
+		while (x < 1280)
+		{
+			put_pixel(&game->image, x, y, color);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	draw_square(t_image *img, int start_x, int start_y,
@@ -53,7 +76,7 @@ void	draw_tile(t_game *game, int x, int y, char tile)
 		|| tile == 'E' || tile == 'W')
 		color = 0x202020;
 	else
-		return;
+		return ;
 	draw_square(&game->image,
 		x * 64,
 		y * 64,
@@ -89,7 +112,6 @@ void	draw_player_direction(t_game *game)
 
 	start_x = (int)(game->player.x * 64);
 	start_y = (int)(game->player.y * 64);
-
 	i = 0;
 	while (i < 64)
 	{

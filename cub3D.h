@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/18 09:45:13 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/18 09:59:24 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ typedef struct	s_texture
 	char		*east;
 	char		*ceiling;
 	char		*floor;
-	
+
 }			t_texture;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char		**grid;
 	int			width;
 	int			height;
-	
+
 }			t_map;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	double		x; /*placement*/
 	double		y;
@@ -60,7 +60,6 @@ typedef struct	s_player
 	double		plane_y; /*largeur de la camera verti*/
 	double		move_speed;
 	double		rot_speed;
-	
 }			t_player;
 
 typedef struct	s_ray
@@ -97,10 +96,13 @@ typedef struct	s_game
 	void		*mlx;
 	void		*window;
 
+	int			floor_rgb;
+	int			ceiling_rgb;
+
 	t_player	player;
 	t_texture	texture;
 	t_image		image;
-	t_map 		map;
+	t_map		map;
 	t_ray		ray;
 
 }			t_game;
@@ -118,6 +120,9 @@ int		parsing(char *filename, t_game *game);
 
 /*parsing/parse_player.c*/
 int		parse_player(t_game *game);
+
+/*parsing/parse.color.c*/
+int		parse_color(t_game *game);
 
 /*parsing/check_colors.c*/
 int		check_colors(char **color, char *line);
@@ -152,6 +157,7 @@ int		open_game(t_game *game);
 /*game/draw_map.c*/
 void	draw_map_2d(t_game *game);
 void	draw_player_direction(t_game *game);
+void	draw_background(t_game *game);
 
 /*game/movement.c*/
 void	move_forward_backward(t_game *game, double direction);
