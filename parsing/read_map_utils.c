@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 11:29:13 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:17:21 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/20 16:28:06 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,25 @@ void	remove_newline(char *line)
 	len = ft_strlen(line);
 	if (len > 0 && line[len - 1] == '\n')
 		line[len - 1] = '\0';
+}
+
+int	is_map_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	if (line[0] == '\0')
+		return (0);
+	while (line[i])
+	{
+		if (line[i] != '0' && line[i] != '1'
+			&& line[i] != 'N' && line[i] != 'S'
+			&& line[i] != 'E' && line[i] != 'W'
+			&& line[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	get_map_width(t_map *map)

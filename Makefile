@@ -6,7 +6,7 @@
 #    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/17 17:23:56 by mrojouan         ###   ########.fr        #
+#    Updated: 2026/09/20 16:30:43 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS        = main.c \
               parsing/check_textures.c \
               parsing/read_map.c \
               parsing/read_map_grid.c \
-			  parsing/utils.c \
+			  parsing/read_map_utils.c \
               parsing/check_map_utils.c \
               parsing/check_map_walls.c \
               parsing/parsing.c \
