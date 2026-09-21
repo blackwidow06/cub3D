@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/18 11:03:47 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/21 08:45:21 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,12 @@ typedef struct	s_ray
 	double		ray_dir_y;
 	int			map_x;
 	int			map_y;
-	int			step_X;
+	int			step_x;
 	int			step_y;
 	double		delta_dist_x; /*distance pour atteindre la next front*/
 	double		delta_dist_y;
+	double		side_dist_x;
+	double		side_dist_y;
 	double		wall_dist;
 	int			side;
 	int			line_heigth;
