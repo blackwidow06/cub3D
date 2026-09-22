@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/21 08:45:21 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/22 10:39:33 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 
-#define	WIN_WIDTH 1280
+# define WIN_WIDTH 640
+# define WIN_HEIGHT 480
 
 typedef struct	s_texture
 {
@@ -73,13 +74,14 @@ typedef struct	s_ray
 	int			map_y;
 	int			step_x;
 	int			step_y;
-	double		delta_dist_x; /*distance pour atteindre la next front*/
+	double		delta_dist_x; /*distane entre deux frontieres*/
 	double		delta_dist_y;
-	double		side_dist_x;
+	double		side_dist_x;/*distance pour atteindre la next front*/
 	double		side_dist_y;
 	double		wall_dist;
+	double		perp_wall_dist;
 	int			side;
-	int			line_heigth;
+	int			line_height;
 	int			draw_start;
 	int			draw_end;
 	
@@ -167,6 +169,9 @@ void	draw_background(t_game *game);
 void	move_forward_backward(t_game *game, double direction);
 void	move_left_right(t_game *game, double direction);
 void	rotate_player(t_game *game, double angle);
+
+/*raycasting/init_ray.c*/
+
 
 /*error.c*/
 int		exit_game(t_game *game, char *end_mes);

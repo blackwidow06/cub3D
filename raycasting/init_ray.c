@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 10:07:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/21 12:19:53 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/22 10:50:26 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,66 @@ int	init_dda(t_game *game) /*avancer de case en case until wall*/
 		ray->side_dist_y = (ray->map_y + 1.0 - player->y)
 			* ray->delta_dist_y;
 	}
+}
+
+//static int	is_wall(t_game *game, t_ray *ray)
+//{
+//	if (ray->map_y < 0
+//		|| ray->map_y >= game->map.height)
+//		return (1);
+//	if (ray->map_x < 0
+//		|| ray->map_x >= (int)ft_strlen(game->map.grid[ray->map_y]))
+//		return (1);
+//	if (game->map.grid[ray->map_y][ray->map_x] == '1')
+//		return (1);
+//	return (0);
+//}
+
+void	single_ray(t_game *game)
+{
+	t_ray	*ray;
+
+	ray = &game->ray;
+	ray->side = 0;
+	while (!is_wall(game, ray))
+	{
+		if (ray->side_dist_x < ray->side_dist_y) /*quelle frontiere est plus proche*/
+		{
+			ray->side_dist_x += ray->delta_dist_x;/*si x est plus proche change de colonne*/
+			ray->map_x += ray->step_x;
+			ray->side = 0;/*verticale*/
+		}
+		else
+		{
+			ray->side_dist_y += ray->delta_dist_y;/*si y est plus proche change de ligne*/
+			ray->map_x += ray->step_y;
+			ray->side = 1;/*horizontale*/
+		}
+	}
+}
+
+void	calculate_wall(t_game *game)
+{
+	t_ray *ray;
+
+	ray = &game->ray;
+	if (ray->side == 0)
+		ray->perp_wall_dist = ray->side_dist_x
+			- ray->delta_dist_x;
+	else
+		ray->perp_wall_dist = ray->side_dist_y
+			- ray->delta_dist_y;
+	ray->line_height = (int)(WIN_HEIGHT
+			/ ray->delta_dist_y);
+	ray->draw_start = -ray->line_height / 2
+			+ WIN_HEIGHT /2;
+	if (ray->draw_start < 0)
+		ray->draw_start < 0;
+	if (ray->draw_end >= WIN_HEIGHT)
+		ray->draw_end = WIN_HEIGHT - 1;
+}
+
+void	draw_column(t_game *game, int x)
+{
+	
 }
