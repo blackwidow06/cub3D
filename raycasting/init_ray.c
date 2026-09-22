@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 10:07:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/22 10:50:26 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/22 12:49:32 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,18 @@ void	calculate_wall(t_game *game)
 }
 
 void	draw_column(t_game *game, int x)
+{
+	int	y;
+	int	color;
+
+	y = 0;
+	while (y < WIN_HEIGHT)
+	{
+		
+	}
+}
+
+void	raycasting(t_game *game)
 {
 	
 }
