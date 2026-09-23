@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
+#    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/17 17:23:56 by mrojouan         ###   ########.fr        #
+#    Updated: 2026/09/23 09:49:12 by malavaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS        = main.c \
               parsing/check_colors.c \
 			  parsing/parse_player.c \
 			  parsing/parse_color.c \
+			  raycasting/init_ray.c \
               get_next_line/get_next_line.c \
               get_next_line/get_next_line_utils.c \
 			  init_struct.c \
