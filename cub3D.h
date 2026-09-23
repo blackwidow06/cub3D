@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 11:34:57 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/23 12:54:24 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 
-# define WIN_WIDTH 640
-# define WIN_HEIGHT 480
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 
 typedef struct	s_texture
 {
@@ -171,7 +171,16 @@ void	move_forward_backward(t_game *game, double direction);
 void	move_left_right(t_game *game, double direction);
 void	rotate_player(t_game *game, double angle);
 
-/*raycasting/init_ray.c*/
+/*raycasting/raycasting_utils.c*/
+void	single_ray(t_game *game);
+void	calculate_wall(t_game *game);
+void	draw_column(t_game *game, int x);
+
+/*raycasting/raycasting_utils2.c*/
+void	init_dda(t_game *game);
+void	init_ray(t_game *game, int x);
+
+/*raycasting/raycasting.c*/
 int		game_loop(t_game *game);
 
 /*error.c*/

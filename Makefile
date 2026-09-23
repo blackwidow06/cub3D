@@ -6,7 +6,7 @@
 #    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/23 09:49:12 by malavaud         ###   ########.fr        #
+#    Updated: 2026/09/23 12:45:39 by malavaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ SRCS        = main.c \
               parsing/check_colors.c \
 			  parsing/parse_player.c \
 			  parsing/parse_color.c \
-			  raycasting/init_ray.c \
+			  raycasting/raycasting.c \
+			  raycasting/raycasting_utils.c \
+			  raycasting/raycasting_utils2.c \
               get_next_line/get_next_line.c \
               get_next_line/get_next_line_utils.c \
 			  init_struct.c \
