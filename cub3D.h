@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 12:54:24 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/23 13:44:22 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ int		read_map_grid(char *filename, t_map *map);
 /*parsing/check_map_utils.c*/
 int		check_map_characters(t_map *map);
 int		check_player_count(t_map *map);
+int		is_valid_cell(char c);
 int		is_map_line(char *line);
 
 /*parsing/check_map_walls.c*/
