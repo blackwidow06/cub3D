@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
+#    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/23 12:45:39 by malavaud         ###   ########.fr        #
+#    Updated: 2026/09/23 13:44:29 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS        = main.c \
               parsing/check_textures.c \
               parsing/read_map.c \
               parsing/read_map_grid.c \
-			  parsing/utils.c \
+			  parsing/read_map_utils.c \
               parsing/check_map_utils.c \
               parsing/check_map_walls.c \
               parsing/parsing.c \
