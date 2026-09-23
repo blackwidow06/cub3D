@@ -5,13 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2026/09/20 14:34:18 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/20 16:31:22 by mrojouan         ###   ########.fr       */
-=======
 /*   Created: 2026/09/15 10:41:58 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/22 08:52:34 by malavaud         ###   ########.fr       */
->>>>>>> b98c1075e3a270a6a987a4942306b85ed986d092
+/*   Updated: 2026/09/23 13:59:01 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +82,6 @@ static int	check_top_bottom(t_map *map)
 
 static int	check_sides(t_map *map)
 {
-<<<<<<< HEAD
 	int	i;
 	int	j;
 	int	len;
@@ -120,11 +114,4 @@ int	check_map_walls(t_map *map)
 	if (check_inside(map) == 1)
 		return (1);
 	return (0);
-=======
-    if (check_top_bottom(map) == 1)
-        return (1);
-    if (check_sides(map) == 1)
-        return (1);
-    return (0);
->>>>>>> b98c1075e3a270a6a987a4942306b85ed986d092
 }
