@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 13:44:22 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/23 14:05:03 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,8 @@ void	init_ray(t_game *game, int x);
 int		game_loop(t_game *game);
 
 /*error.c*/
-int		exit_game(t_game *game, char *end_mes);
+void	print_error_exit(t_game *game, char *end_mess);
+int		exit_game(t_game *game);
+
 
 #endif

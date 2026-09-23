@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/22 12:47:07 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/23 14:48:41 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,17 @@ void	free_tab(char **tab)
 		free(tab[i]);
 		i++;
 	}
+	free(tab);
 }
 
-int	exit_game(t_game *game, char *end_mes)
+int	exit_game(t_game *game)
 {
+	free(game->texture.ceiling);
+	free(game->texture.floor);
+	free(game->texture.north);
+	free(game->texture.south);
+	free(game->texture.east);
+	free(game->texture.west);
 	if (game->mlx)
 	{
 		if (game->image.img)
@@ -33,9 +40,12 @@ int	exit_game(t_game *game, char *end_mes)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
+	exit(0);
+}
+
+void print_error_exit(t_game *game, char *end_mes)
+{
 	if (end_mes)
 		printf("%s", end_mes);
-	free_tab(&game->texture.ceiling);
-	free_tab(&game->texture.floor);
-	exit(0);
+	exit_game(game);
 }
