@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 14:05:03 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/23 15:30:15 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 
-typedef struct	s_texture
+typedef struct s_texture
 {
 	char		*north;
 	char		*south;
@@ -65,7 +65,7 @@ typedef struct s_player
 	double		rot_speed;
 }			t_player;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double		camera_x;
 	double		ray_dir_x;
@@ -84,26 +84,32 @@ typedef struct	s_ray
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
-	
+
 }			t_ray;
 
-typedef struct	s_image
+typedef struct s_image
 {
 	void		*img;
 	char		*addr;
 	int			bits_per_pixel;
 	int			line_length;
 	int			byte_order;
-	
+
 }			t_image;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
 
 	int			floor_rgb;
 	int			ceiling_rgb;
+	int			key_w;
+	int			key_a;
+	int			key_s;
+	int			key_d;
+	int			key_left;
+	int			key_right;
 
 	t_player	player;
 	t_texture	texture;
@@ -187,6 +193,5 @@ int		game_loop(t_game *game);
 /*error.c*/
 void	print_error_exit(t_game *game, char *end_mess);
 int		exit_game(t_game *game);
-
 
 #endif

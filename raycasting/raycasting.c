@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 10:07:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 12:38:38 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/23 15:22:37 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ static	void	raycasting(t_game *game)
 
 int	game_loop(t_game *game)
 {
+	if (game->key_w)
+		move_forward_backward(game, 1);
+	if (game->key_s)
+		move_forward_backward(game, -1);
+	if (game->key_a)
+		move_left_right(game, -1);
+	if (game->key_d)
+		move_left_right(game, 1);
+	if (game->key_left)
+		rotate_player(game, -game->player.rot_speed);
+	if (game->key_right)
+		rotate_player(game, game->player.rot_speed);
 	raycasting(game);
 	mlx_put_image_to_window(game->mlx, game->window,
 		game->image.img, 0, 0);

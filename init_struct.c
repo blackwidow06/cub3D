@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 12:44:54 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/16 14:32:37 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/23 15:25:27 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ void	init_game(t_game *game)
 {
 	game->mlx = NULL;
 	game->window = NULL;
+	game->key_a = 0;
+	game->key_d = 0;
+	game->key_s = 0;
+	game->key_w = 0;
+	game->key_left = 0;
+	game->key_right = 0;
 }
 
 void	init_map(t_map *map)
@@ -31,8 +37,8 @@ void	init_player(t_player *player)
 	player->y = 0;
 	player->dir_x = 0;
 	player->dir_y = 0;
-	player->move_speed = 0.05;
-	player->rot_speed = 0.05;
+	player->move_speed = 0.03;
+	player->rot_speed = 0.02;
 }
 
 void	init_texture(t_texture *texture)

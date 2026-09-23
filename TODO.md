@@ -4,10 +4,10 @@
 - [ ] Gestion des trous PENDING
 
 ## Deplacement
-- [ ] Deplacement fluide 
+- [V] Deplacement fluide
 
 ## Game
-- [ ] Segfault(X)
+- [V] Segfault(X)
 
 ## Rendering
 - [ ] Textures
