@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 15:54:31 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/18 09:57:03 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/23 11:34:31 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	put_pixel(t_image *img, int x, int y, int color)
 {
-	char	*dst;
+	char	*dest;
 
-	dst = img->addr + (y * img->line_length
+	dest = img->addr + (y * img->line_length
 			+ x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	*(unsigned int *)dest = color;
 }
 
 void	draw_background(t_game *game)

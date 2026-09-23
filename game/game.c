@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:30:50 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/18 11:41:43 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/23 11:34:29 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,18 @@ int	key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 		exit_game(game, "Exit game");
-	if (keycode == 1731)
+	else if (keycode == 119)
 		move_forward_backward(game, 1);
-	if (keycode == 1753)
+	else if (keycode == 115)
 		move_forward_backward(game, -1);
-	if (keycode == 1734)
+	else if (keycode == 97)
 		move_left_right(game, -1);
-	if (keycode == 1751)
+	else if (keycode == 100)
 		move_left_right(game, 1);
-	if (keycode == KEY_LEFT)
+	else if (keycode == KEY_LEFT)
 		rotate_player(game, -game->player.rot_speed);
-	if (keycode == KEY_RIGHT)
+	else if (keycode == KEY_RIGHT)
 		rotate_player(game, game->player.rot_speed);
-	draw_background(game);
-	draw_map_2d(game);
-	draw_player_direction(game);
-	mlx_put_image_to_window(game->mlx, game->window,
-		game->image.img, 0, 0);
 	return (0);
 }
 
@@ -61,6 +56,7 @@ int	open_game(t_game *game)
 		0);
 	mlx_hook(game->window, 17, 0, exit_game, game);
 	mlx_hook(game->window, 2, 1L << 0, key_press, game);
+	mlx_loop_hook(game->mlx, game_loop, game);;
 	mlx_loop(game->mlx);
 	return (0);
 }

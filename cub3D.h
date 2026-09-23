@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/20 16:28:55 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/23 13:44:22 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 
-typedef struct s_texture
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
+
+typedef struct	s_texture
 {
 	char		*north;
 	char		*south;
@@ -62,16 +65,39 @@ typedef struct s_player
 	double		rot_speed;
 }			t_player;
 
-typedef struct s_image
+typedef struct	s_ray
+{
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	double		delta_dist_x; /*distane entre deux frontieres*/
+	double		delta_dist_y;
+	double		side_dist_x;/*distance pour atteindre la next front*/
+	double		side_dist_y;
+	double		wall_dist;
+	double		perp_wall_dist;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	
+}			t_ray;
+
+typedef struct	s_image
 {
 	void		*img;
 	char		*addr;
 	int			bits_per_pixel;
 	int			line_length;
 	int			byte_order;
+	
 }			t_image;
 
-typedef struct s_game
+typedef struct	s_game
 {
 	void		*mlx;
 	void		*window;
@@ -83,6 +109,7 @@ typedef struct s_game
 	t_texture	texture;
 	t_image		image;
 	t_map		map;
+	t_ray		ray;
 
 }			t_game;
 
@@ -135,6 +162,7 @@ void	init_map(t_map *map);
 int		open_game(t_game *game);
 
 /*game/draw_map.c*/
+void	put_pixel(t_image *img, int x, int y, int color);
 void	draw_map_2d(t_game *game);
 void	draw_player_direction(t_game *game);
 void	draw_background(t_game *game);
@@ -143,6 +171,18 @@ void	draw_background(t_game *game);
 void	move_forward_backward(t_game *game, double direction);
 void	move_left_right(t_game *game, double direction);
 void	rotate_player(t_game *game, double angle);
+
+/*raycasting/raycasting_utils.c*/
+void	single_ray(t_game *game);
+void	calculate_wall(t_game *game);
+void	draw_column(t_game *game, int x);
+
+/*raycasting/raycasting_utils2.c*/
+void	init_dda(t_game *game);
+void	init_ray(t_game *game, int x);
+
+/*raycasting/raycasting.c*/
+int		game_loop(t_game *game);
 
 /*error.c*/
 int		exit_game(t_game *game, char *end_mes);
