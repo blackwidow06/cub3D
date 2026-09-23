@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 10:07:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/22 12:49:32 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/23 10:02:45 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 //ray_dir_x = 0 + 0.66 * 0 = 0
 //ray_dir_y = -1 + 0 * 0 = -1   -> donc millieu
 
-int	init_ray(t_game *game, int x)
+static	void	init_ray(t_game *game, int x)
 {
 	game->ray.camera_x = 2 * x / (double)WIN_WIDTH - 1; /*transforme la colonne x en -1 ou 1*/
 	game->ray.ray_dir_x = game->player.dir_x /*calcul direction du rayon*/
@@ -33,7 +33,7 @@ int	init_ray(t_game *game, int x)
 		+ game->player.plane_y * game->ray.camera_x;
 }
 
-int	init_dda(t_game *game) /*avancer de case en case until wall*/
+static	void	init_dda(t_game *game) /*avancer de case en case until wall*/
 {
 	t_ray		*ray;
 	t_player	*player;
@@ -42,7 +42,7 @@ int	init_dda(t_game *game) /*avancer de case en case until wall*/
 	player = &game->player;
 	ray->map_x = (int)player->x; /*find case actuelle*/
 	ray->map_y = (int)player->y;
-	ray->delta_dist_y = fabs(1 / ray->ray_dir_x);/*distane pour traverser une case complete*/
+	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);/*distane pour traverser une case complete*/
 	ray->delta_dist_y = fabs(1 / ray->ray_dir_y); /*fabs pour obtenir une valeur positive*/
 	if (ray->ray_dir_x < 0)
 	{
@@ -68,28 +68,36 @@ int	init_dda(t_game *game) /*avancer de case en case until wall*/
 		ray->side_dist_y = (ray->map_y + 1.0 - player->y)
 			* ray->delta_dist_y;
 	}
+	if (ray->ray_dir_x == 0)
+		ray->delta_dist_x = 1e30;
+	else
+		ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
+	if (ray->ray_dir_y == 0)
+		ray->delta_dist_y = 1e30;
+	else
+		ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
 }
 
-//static int	is_wall(t_game *game, t_ray *ray)
-//{
-//	if (ray->map_y < 0
-//		|| ray->map_y >= game->map.height)
-//		return (1);
-//	if (ray->map_x < 0
-//		|| ray->map_x >= (int)ft_strlen(game->map.grid[ray->map_y]))
-//		return (1);
-//	if (game->map.grid[ray->map_y][ray->map_x] == '1')
-//		return (1);
-//	return (0);
-//}
+static int	is_map_wall(t_game *game, t_ray *ray)
+{
+	if (ray->map_y < 0
+		|| ray->map_y >= game->map.height)
+		return (1);
+	if (ray->map_x < 0
+		|| ray->map_x >= (int)ft_strlen(game->map.grid[ray->map_y]))
+		return (1);
+	if (game->map.grid[ray->map_y][ray->map_x] == '1')
+		return (1);
+	return (0);
+}
 
-void	single_ray(t_game *game)
+static	void	single_ray(t_game *game)
 {
 	t_ray	*ray;
 
 	ray = &game->ray;
 	ray->side = 0;
-	while (!is_wall(game, ray))
+	while (!is_map_wall(game, ray))
 	{
 		if (ray->side_dist_x < ray->side_dist_y) /*quelle frontiere est plus proche*/
 		{
@@ -100,34 +108,38 @@ void	single_ray(t_game *game)
 		else
 		{
 			ray->side_dist_y += ray->delta_dist_y;/*si y est plus proche change de ligne*/
-			ray->map_x += ray->step_y;
+			ray->map_y += ray->step_y;
 			ray->side = 1;/*horizontale*/
 		}
 	}
 }
 
-void	calculate_wall(t_game *game)
+static	void	calculate_wall(t_game *game)
 {
-	t_ray *ray;
+	t_ray	*ray;
 
 	ray = &game->ray;
-	if (ray->side == 0)
+	if (ray->side == 0) /*calculer distance du mur x ou y*/
 		ray->perp_wall_dist = ray->side_dist_x
 			- ray->delta_dist_x;
 	else
 		ray->perp_wall_dist = ray->side_dist_y
 			- ray->delta_dist_y;
-	ray->line_height = (int)(WIN_HEIGHT
-			/ ray->delta_dist_y);
+	if (ray->perp_wall_dist <= 0)
+		ray->perp_wall_dist = 0.1;
+	ray->line_height = (int)(WIN_HEIGHT /*calcul hauteur de la colonne*/
+			/ ray->perp_wall_dist);
 	ray->draw_start = -ray->line_height / 2
-			+ WIN_HEIGHT /2;
+		+ WIN_HEIGHT / 2;
+	ray->draw_end = ray->line_height / 2
+		+ WIN_HEIGHT / 2;
 	if (ray->draw_start < 0)
-		ray->draw_start < 0;
-	if (ray->draw_end >= WIN_HEIGHT)
+		ray->draw_start = 0;
+	if (ray->draw_end >= WIN_HEIGHT)/*limite pour pas dessiner hors de l'ecran*/
 		ray->draw_end = WIN_HEIGHT - 1;
 }
 
-void	draw_column(t_game *game, int x)
+static	void	draw_column(t_game *game, int x)
 {
 	int	y;
 	int	color;
@@ -135,11 +147,44 @@ void	draw_column(t_game *game, int x)
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
-		
+		if (y < game->ray.draw_start)
+			color = 0x87CEEB;
+		else if (y <= game->ray.draw_end)
+			color = 0x808080;
+		else
+			color = 0x654321;
+		put_pixel(&game->image, x, y, color);
+		y++;
 	}
 }
 
-void	raycasting(t_game *game)
+static	void	raycasting(t_game *game)
 {
-	
+	int	x;
+
+	x = 0;
+	while (x < WIN_WIDTH)
+	{
+		init_ray(game, x);
+		init_dda(game);
+		single_ray(game);
+		calculate_wall(game);
+		draw_column(game, x);
+		if (x == WIN_WIDTH / 2)
+		{
+			printf("Ray dir X : %f\n", game->ray.ray_dir_x);
+			printf("Ray dir Y : %f\n", game->ray.ray_dir_y);
+			printf("Wall distance : %f\n",
+				game->ray.perp_wall_dist);
+		}
+		x++;
+	}
+}
+
+int	game_loop(t_game *game)
+{
+	raycasting(game);
+	mlx_put_image_to_window(game->mlx, game->window,
+		game->image.img, 0, 0);
+	return (0);
 }

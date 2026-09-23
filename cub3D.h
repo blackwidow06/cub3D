@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/22 10:39:33 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/23 10:00:56 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ void	init_map(t_map *map);
 int		open_game(t_game *game);
 
 /*game/draw_map.c*/
+void	put_pixel(t_image *img, int x, int y, int color);
 void	draw_map_2d(t_game *game);
 void	draw_player_direction(t_game *game);
 void	draw_background(t_game *game);
@@ -171,7 +172,7 @@ void	move_left_right(t_game *game, double direction);
 void	rotate_player(t_game *game, double angle);
 
 /*raycasting/init_ray.c*/
-
+int		game_loop(t_game *game);
 
 /*error.c*/
 int		exit_game(t_game *game, char *end_mes);
