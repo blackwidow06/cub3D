@@ -6,28 +6,45 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:30:50 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/23 11:34:29 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/23 15:28:42 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+int	key_release(int keycode, t_game *game)
+{
+	if (keycode == 119)
+		game->key_w = 0;
+	else if (keycode == 115)
+		game->key_s = 0;
+	else if (keycode == 97)
+		game->key_a = 0;
+	else if (keycode == 100)
+		game->key_d = 0;
+	else if (keycode == KEY_LEFT)
+		game->key_left = 0;
+	else if (keycode == KEY_RIGHT)
+		game->key_right = 0;
+	return (0);
+}
+
 int	key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
-		exit_game(game, "Exit game");
+		exit_game(game);
 	else if (keycode == 119)
-		move_forward_backward(game, 1);
+		game->key_w = 1;
 	else if (keycode == 115)
-		move_forward_backward(game, -1);
+		game->key_s = 1;
 	else if (keycode == 97)
-		move_left_right(game, -1);
+		game->key_a = 1;
 	else if (keycode == 100)
-		move_left_right(game, 1);
+		game->key_d = 1;
 	else if (keycode == KEY_LEFT)
-		rotate_player(game, -game->player.rot_speed);
+		game->key_left = 1;
 	else if (keycode == KEY_RIGHT)
-		rotate_player(game, game->player.rot_speed);
+		game->key_right = 1;
 	return (0);
 }
 
@@ -46,8 +63,6 @@ int	open_game(t_game *game)
 			&game->image.line_length,
 			&game->image.byte_order);
 	draw_background(game);
-	draw_map_2d(game);
-	draw_player_direction(game);
 	mlx_put_image_to_window(
 		game->mlx,
 		game->window,
@@ -56,7 +71,8 @@ int	open_game(t_game *game)
 		0);
 	mlx_hook(game->window, 17, 0, exit_game, game);
 	mlx_hook(game->window, 2, 1L << 0, key_press, game);
-	mlx_loop_hook(game->mlx, game_loop, game);;
+	mlx_hook(game->window, 3, 1L << 1, key_release, game);
+	mlx_loop_hook(game->mlx, game_loop, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

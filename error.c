@@ -3,17 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/16 11:49:05 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/23 14:48:41 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	exit_game(t_game *game, char *end_mes)
+void	free_tab(char **tab)
 {
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
+int	exit_game(t_game *game)
+{
+	free(game->texture.ceiling);
+	free(game->texture.floor);
+	free(game->texture.north);
+	free(game->texture.south);
+	free(game->texture.east);
+	free(game->texture.west);
 	if (game->mlx)
 	{
 		if (game->image.img)
@@ -21,7 +40,12 @@ int	exit_game(t_game *game, char *end_mes)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
+	exit(0);
+}
+
+void print_error_exit(t_game *game, char *end_mes)
+{
 	if (end_mes)
 		printf("%s", end_mes);
-	exit(0);
+	exit_game(game);
 }

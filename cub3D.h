@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 13:06:39 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/24 08:05:29 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 
-typedef struct	s_texture
+typedef struct s_texture
 {
 	char		*north;
 	char		*south;
@@ -65,7 +65,7 @@ typedef struct s_player
 	double		rot_speed;
 }			t_player;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double		camera_x;
 	double		ray_dir_x;
@@ -84,25 +84,35 @@ typedef struct	s_ray
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
-	
+
 }			t_ray;
 
-typedef struct	s_image
+typedef struct s_image
 {
 	void		*img;
 	char		*addr;
 	int			bits_per_pixel;
 	int			line_length;
 	int			byte_order;
-	
+
 }			t_image;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
 	int			floor_rgb;
 	int			ceiling_rgb;
+<<<<<<< HEAD
+=======
+	int			key_w;
+	int			key_a;
+	int			key_s;
+	int			key_d;
+	int			key_left;
+	int			key_right;
+
+>>>>>>> dd0df5611e7916841464cd76ed2724e7be778560
 	t_player	player;
 	t_texture	texture;
 	t_image		image;
@@ -139,6 +149,7 @@ int		read_map_grid(char *filename, t_map *map);
 /*parsing/check_map_utils.c*/
 int		check_map_characters(t_map *map);
 int		check_player_count(t_map *map);
+int		is_valid_cell(char c);
 int		is_map_line(char *line);
 
 /*parsing/check_map_walls.c*/
@@ -182,6 +193,7 @@ void	init_ray(t_game *game, int x);
 int		game_loop(t_game *game);
 
 /*error.c*/
-int		exit_game(t_game *game, char *end_mes);
+void	print_error_exit(t_game *game, char *end_mess);
+int		exit_game(t_game *game);
 
 #endif
