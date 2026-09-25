@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 15:30:15 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/25 10:00:08 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct s_image
 	int			bits_per_pixel;
 	int			line_length;
 	int			byte_order;
+	int			width;
+	int			height;
 
 }			t_image;
 
@@ -101,7 +103,6 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
-
 	int			floor_rgb;
 	int			ceiling_rgb;
 	int			key_w;
@@ -110,10 +111,14 @@ typedef struct s_game
 	int			key_d;
 	int			key_left;
 	int			key_right;
-
 	t_player	player;
 	t_texture	texture;
 	t_image		image;
+	t_image		wall_texture;
+	t_image		wall_north;
+	t_image		wall_south;
+	t_image		wall_east;
+	t_image		wall_west;
 	t_map		map;
 	t_ray		ray;
 
@@ -172,6 +177,9 @@ void	put_pixel(t_image *img, int x, int y, int color);
 void	draw_map_2d(t_game *game);
 void	draw_player_direction(t_game *game);
 void	draw_background(t_game *game);
+int		get_texture_pixel(t_image *texture, int x, int y);
+int		get_texture_x(t_game *game);
+t_image	*get_wall_texture(t_game *game);
 
 /*game/movement.c*/
 void	move_forward_backward(t_game *game, double direction);
@@ -193,5 +201,9 @@ int		game_loop(t_game *game);
 /*error.c*/
 void	print_error_exit(t_game *game, char *end_mess);
 int		exit_game(t_game *game);
+
+/*textures.c*/
+int		load_one_texture(t_game *game, t_image *image, char *path);
+int		load_wall_textures(t_game *game);
 
 #endif
