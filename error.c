@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 14:48:41 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/25 13:08:56 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	exit_game(t_game *game)
 	exit(0);
 }
 
-void print_error_exit(t_game *game, char *end_mes)
+void	print_error_exit(t_game *game, char *end_mes)
 {
 	if (end_mes)
 		printf("%s", end_mes);

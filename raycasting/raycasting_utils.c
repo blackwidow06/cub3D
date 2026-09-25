@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:37:02 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/25 09:45:08 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/25 13:14:11 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,69 +73,38 @@ void	calculate_wall(t_game *game)
 		ray->draw_end = WIN_HEIGHT - 1;
 }
 
-//void	draw_column(t_game *game, int x)
-//{
-//	t_ray	*ray;
-//	int		y;
-//	int		texture_x;
-//	int		texture_y;
-//	double	step;
-//	double	tex_pos;
+static void	draw_pixel(t_game *game, int x, int y,
+		t_image *texture, double *tex_pos)
+{
+	int	texture_y;
 
-//	ray = &game->ray;
-//	texture_x = get_texture_x(game);
-//	step = (double)game->wall_texture.height / ray->line_height;
-//	tex_pos = (ray->draw_start - WIN_HEIGHT / 2
-//			+ ray->line_height / 2) * step;
-//	y = 0;
-//	while (y < WIN_HEIGHT)
-//	{
-//		if (y < ray->draw_start)
-//			put_pixel(&game->image, x, y, game->ceiling_rgb);
-//		else if (y <= ray->draw_end)
-//		{
-//			texture_y = (int)tex_pos
-//				% game->wall_texture.height;
-//			tex_pos += step;
-//			put_pixel(&game->image, x, y,
-//				get_texture_pixel(&game->wall_texture,
-//					texture_x, texture_y));
-//		}
-//		else
-//			put_pixel(&game->image, x, y, game->floor_rgb);
-//		y++;
-//	}
-//}
+	if (y < game->ray.draw_start)
+		put_pixel(&game->image, x, y, game->ceiling_rgb);
+	else if (y <= game->ray.draw_end)
+	{
+		texture_y = (int)*tex_pos % texture->height;
+		*tex_pos += (double)texture->height / game->ray.line_height;
+		put_pixel(&game->image, x, y,
+			get_texture_pixel(texture, get_texture_x(game), texture_y));
+	}
+	else
+		put_pixel(&game->image, x, y, game->floor_rgb);
+}
+
 void	draw_column(t_game *game, int x)
 {
-	t_ray	*ray;
 	t_image	*texture;
-	int		y;
-	int		texture_x;
-	int		texture_y;
-	double	step;
 	double	tex_pos;
+	int		y;
 
-	ray = &game->ray;
 	texture = get_wall_texture(game);
-	texture_x = get_texture_x(game);
-	step = (double)texture->height / ray->line_height;
-	tex_pos = (ray->draw_start - WIN_HEIGHT / 2
-			+ ray->line_height / 2) * step;
+	tex_pos = (game->ray.draw_start - WIN_HEIGHT / 2
+			+ game->ray.line_height / 2)
+		* (double)texture->height / game->ray.line_height;
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
-		if (y < ray->draw_start)
-			put_pixel(&game->image, x, y, game->ceiling_rgb);
-		else if (y <= ray->draw_end)
-		{
-			texture_y = (int)tex_pos % texture->height;
-			tex_pos += step;
-			put_pixel(&game->image, x, y,
-				get_texture_pixel(texture, texture_x, texture_y));
-		}
-		else
-			put_pixel(&game->image, x, y, game->floor_rgb);
+		draw_pixel(game, x, y, texture, &tex_pos);
 		y++;
 	}
 }

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_map_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/25 13:10:04 by malavaud         ###   ########.fr       */
+/*   Created: 2026/09/25 13:27:08 by malavaud          #+#    #+#             */
+/*   Updated: 2026/09/25 13:28:21 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	main(int argc, char **argv)
+void	put_pixel(t_image *img, int x, int y, int color)
 {
-	t_game	game;
+	char	*dest;
 
-	if (argc != 2)
-		return (1);
-	init_texture(&game.texture);
-	init_player(&game.player);
-	init_map(&game.map);
-	init_game(&game);
-	parsing(argv[1], &game);
-	open_game(&game);
-	return (0);
+	dest = img->addr + (y * img->line_length
+			+ x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dest = color;
 }
