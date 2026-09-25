@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "compilerPath": "/usr/bin/cc",
+            "cStandard": "c17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/",
+                "${workspaceFolder}/minilibx-linux",
+                "${workspaceFolder}/get_next_line",
+                "${workspaceFolder}/libft"
+            ],
+            "compilerArgs": [
+                "-Wall",
+                "-Wextra",
+                "-Werror"
+            ]
+        }
+    ],
+    "version": 4
+}
