@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:30:50 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/23 15:28:42 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/25 10:00:18 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	open_game(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
+		return (1);
+	if (load_wall_textures(game))
 		return (1);
 	game->window = mlx_new_window(game->mlx, 1280, 720, "Cub3D");
 	if (!game->window)

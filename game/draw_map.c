@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 15:54:31 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/23 15:28:24 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/25 09:44:16 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,48 @@ void	draw_player_direction(t_game *game)
 		put_pixel(&game->image, x, y, 0xFF0000);
 		i++;
 	}
+}
+
+int	get_texture_pixel(t_image *texture, int x, int y)
+{
+	char	*pixel;
+
+	pixel = texture->addr + (y * texture->line_length
+			+ x * (texture->bits_per_pixel / 8));
+	return (*(unsigned int *)pixel);
+}
+
+int	get_texture_x(t_game *game)
+{
+	t_image	*texture;
+	double	wall_x;
+	int		texture_x;
+
+	texture = get_wall_texture(game);
+	if (game->ray.side == 0)
+		wall_x = game->player.y
+			+ game->ray.perp_wall_dist * game->ray.ray_dir_y;
+	else
+		wall_x = game->player.x
+			+ game->ray.perp_wall_dist * game->ray.ray_dir_x;
+	wall_x -= floor(wall_x);
+	texture_x = (int)(wall_x * texture->width);
+	if (game->ray.side == 0 && game->ray.ray_dir_x > 0)
+		texture_x = texture->width - texture_x - 1;
+	if (game->ray.side == 1 && game->ray.ray_dir_y < 0)
+		texture_x = texture->width - texture_x - 1;
+	return (texture_x);
+}
+
+t_image	*get_wall_texture(t_game *game)
+{
+	if (game->ray.side == 0)
+	{
+		if (game->ray.ray_dir_x > 0)
+			return (&game->wall_west);
+		return (&game->wall_east);
+	}
+	if (game->ray.ray_dir_y > 0)
+		return (&game->wall_north);
+	return (&game->wall_south);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 10:07:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 15:22:37 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/25 08:49:22 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static	void	raycasting(t_game *game)
 {
 	int	x;
 
+	draw_background(game);
 	x = 0;
 	while (x < WIN_WIDTH)
 	{
@@ -24,13 +25,6 @@ static	void	raycasting(t_game *game)
 		single_ray(game);
 		calculate_wall(game);
 		draw_column(game, x);
-		if (x == WIN_WIDTH / 2)
-		{
-			printf("Ray dir X : %f\n", game->ray.ray_dir_x);
-			printf("Ray dir Y : %f\n", game->ray.ray_dir_y);
-			printf("Wall distance : %f\n",
-				game->ray.perp_wall_dist);
-		}
 		x++;
 	}
 }
