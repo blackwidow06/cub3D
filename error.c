@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 14:48:41 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/25 09:58:40 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	exit_game(t_game *game)
 	free(game->texture.south);
 	free(game->texture.east);
 	free(game->texture.west);
+	free_tab(game->map.grid);
 	if (game->mlx)
 	{
 		if (game->image.img)
