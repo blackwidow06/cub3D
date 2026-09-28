@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/28 09:32:01 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/28 13:16:39 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int	main(int argc, char **argv)
 	init_player(&game.player);
 	init_map(&game.map);
 	init_game(&game);
-	parsing(argv[1], &game);
-	open_game(&game); /* tu peux le repasser en commentaire pour tes tests*/
-	exit_game(&game);
+	if (parsing(argv[1], &game))
+		print_error_exit(&game, "A LAIDE LE PARSING");
+	if (!open_game(&game))
+		print_error_exit(&game, "A LAIDE LE OPEN"); /* tu peux le repasser en commentaire pour tes tests*/
 	return (0);
 }

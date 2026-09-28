@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 08:18:43 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/25 13:20:28 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/28 12:22:51 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,11 @@ t_image	*get_wall_texture(t_game *game)
 	if (game->ray.side == 0)
 	{
 		if (game->ray.ray_dir_x > 0)
-			return (&game->wall_west);
+		return (&game->wall_west);
 		return (&game->wall_east);
 	}
 	if (game->ray.ray_dir_y > 0)
-		return (&game->wall_north);
+	return (&game->wall_north);
 	return (&game->wall_south);
 }
+

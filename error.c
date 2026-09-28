@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/28 09:31:44 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/28 13:13:37 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	free_tab(char **tab)
 	int	i;
 
 	i = 0;
+	if (!tab)
+		return ;
 	while (tab[i])
 	{
 		free(tab[i]);
@@ -27,17 +29,38 @@ void	free_tab(char **tab)
 
 int	exit_game(t_game *game)
 {
-	free(game->texture.ceiling);
-	free(game->texture.floor);
-	free(game->texture.north);
-	free(game->texture.south);
-	free(game->texture.east);
-	free(game->texture.west);
-	free_tab(game->map.grid);
+	if (!game)
+		exit(0);
+	if (game->texture.ceiling)
+		free(game->texture.ceiling);
+	if (game->texture.floor)
+		free(game->texture.floor);
+	if (game->texture.north)
+		free(game->texture.north);
+	if (game->texture.south)
+		free(game->texture.south);
+	if (game->texture.east)
+		free(game->texture.east);
+	if (game->texture.east)
+		free(game->texture.west);
+	if (game->map.grid)	
+		free_tab(game->map.grid);
 	if (game->mlx)
 	{
+		if (game->wall_texture.img)
+			mlx_destroy_image(game->mlx, game->wall_texture.img);
+		if (game->wall_north.img)
+			mlx_destroy_image(game->mlx, game->wall_north.img);
 		if (game->image.img)
 			mlx_destroy_image(game->mlx, game->image.img);
+		if (game->wall_south.img)
+			mlx_destroy_image(game->mlx, game->wall_south.img);
+		if (game->wall_east.img)
+			mlx_destroy_image(game->mlx, game->wall_east.img);
+		if (game->wall_west.img)	
+			mlx_destroy_image(game->mlx, game->wall_west.img);
+		if (game->window)
+			mlx_destroy_window(game->mlx, game->window);
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
