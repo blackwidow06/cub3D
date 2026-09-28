@@ -6,7 +6,7 @@
 #    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/25 08:28:41 by malavaud         ###   ########.fr        #
+#    Updated: 2026/09/28 08:25:19 by malavaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS        = main.c \
 			  error.c \
 			  game/game.c \
 			  game/draw_map.c \
+			  game/draw_map_utils.c \
 			  game/movement.c \
 
 OBJ_DIR     = obj
