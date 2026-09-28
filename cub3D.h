@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loup <loup@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/25 10:00:08 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/25 17:31:13 by loup             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
+
+typedef struct s_iter
+{
+	int			x;
+	int			y;
+	
+}			t_iter;
 
 typedef struct s_texture
 {
@@ -172,14 +179,13 @@ void	init_map(t_map *map);
 /*game/game.c*/
 int		open_game(t_game *game);
 
-/*game/draw_map.c*/
+/*draw_map_utils.c*/
 void	put_pixel(t_image *img, int x, int y, int color);
+
+/*game/draw_map.c*/
 void	draw_map_2d(t_game *game);
 void	draw_player_direction(t_game *game);
 void	draw_background(t_game *game);
-int		get_texture_pixel(t_image *texture, int x, int y);
-int		get_texture_x(t_game *game);
-t_image	*get_wall_texture(t_game *game);
 
 /*game/movement.c*/
 void	move_forward_backward(t_game *game, double direction);
@@ -203,7 +209,9 @@ void	print_error_exit(t_game *game, char *end_mess);
 int		exit_game(t_game *game);
 
 /*textures.c*/
-int		load_one_texture(t_game *game, t_image *image, char *path);
 int		load_wall_textures(t_game *game);
+int		get_texture_pixel(t_image *texture, int x, int y);
+int		get_texture_x(t_game *game);
+t_image	*get_wall_texture(t_game *game);
 
 #endif

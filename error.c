@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/25 09:58:40 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/28 09:31:44 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	exit_game(t_game *game)
 	exit(0);
 }
 
-void print_error_exit(t_game *game, char *end_mes)
+void	print_error_exit(t_game *game, char *end_mes)
 {
 	if (end_mes)
 		printf("%s", end_mes);

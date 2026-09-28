@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:30:50 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/25 10:00:18 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/25 13:25:38 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,8 @@ int	key_press(int keycode, t_game *game)
 	return (0);
 }
 
-int	open_game(t_game *game)
+static int	init_window(t_game *game)
 {
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		return (1);
-	if (load_wall_textures(game))
-		return (1);
 	game->window = mlx_new_window(game->mlx, 1280, 720, "Cub3D");
 	if (!game->window)
 		return (1);
@@ -65,12 +60,20 @@ int	open_game(t_game *game)
 			&game->image.line_length,
 			&game->image.byte_order);
 	draw_background(game);
-	mlx_put_image_to_window(
-		game->mlx,
-		game->window,
-		game->image.img,
-		0,
-		0);
+	mlx_put_image_to_window(game->mlx, game->window,
+		game->image.img, 0, 0);
+	return (0);
+}
+
+int	open_game(t_game *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		return (1);
+	if (load_wall_textures(game))
+		return (1);
+	if (init_window(game))
+		return (1);
 	mlx_hook(game->window, 17, 0, exit_game, game);
 	mlx_hook(game->window, 2, 1L << 0, key_press, game);
 	mlx_hook(game->window, 3, 1L << 1, key_release, game);
