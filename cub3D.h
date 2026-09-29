@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loup <loup@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/25 13:28:12 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/25 17:31:13 by loup             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
+
+typedef struct s_iter
+{
+	int			x;
+	int			y;
+	
+}			t_iter;
 
 typedef struct s_texture
 {
