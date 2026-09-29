@@ -6,7 +6,7 @@
 #    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/29 11:17:41 by mrojouan         ###   ########.fr        #
+#    Updated: 2026/09/29 11:58:50 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,8 @@ SRCS        = main.c \
 			  textures.c \
 			  error.c \
 			  game/game.c \
-			  game/draw_map_utils.c \
 			  game/draw_map.c \
+			  game/draw_map_utils.c \
 			  game/movement.c \
 
 OBJ_DIR     = obj
