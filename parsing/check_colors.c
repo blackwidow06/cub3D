@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:28:16 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/15 12:05:35 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:49:24 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ int	check_rgb(char *color)
 	}
 	if (i != 3)
 		error = 1;
-	free_split(rgb, 3);
+	free_tab(rgb);
 	return (error);
 }

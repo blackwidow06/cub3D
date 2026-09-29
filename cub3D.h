@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/29 08:19:22 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:58:46 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_iter
 {
 	int			x;
 	int			y;
-	
+
 }			t_iter;
 
 typedef struct s_texture
@@ -176,6 +176,9 @@ void	init_player(t_player *player);
 void	init_game(t_game *game);
 void	init_map(t_map *map);
 
+/*init_struct2.c*/
+void	init_ray_struct(t_ray *ray);
+
 /*game/game.c*/
 int		open_game(t_game *game);
 
@@ -205,6 +208,7 @@ int		game_loop(t_game *game);
 /*error.c*/
 void	print_error_exit(t_game *game, char *end_mess);
 int		exit_game(t_game *game);
+void	free_tab(char **tab);
 
 /*textures.c*/
 int		load_wall_textures(t_game *game);
