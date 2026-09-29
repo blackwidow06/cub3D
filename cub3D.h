@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loup <loup@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/25 17:31:13 by loup             ###   ########.fr       */
+/*   Updated: 2026/09/29 10:30:38 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_iter
 {
 	int			x;
 	int			y;
-	
+
 }			t_iter;
 
 typedef struct s_texture
@@ -176,6 +176,9 @@ void	init_player(t_player *player);
 void	init_game(t_game *game);
 void	init_map(t_map *map);
 
+/*init_struct2.c*/
+void	init_ray_struct(t_ray *ray);
+
 /*game/game.c*/
 int		open_game(t_game *game);
 
@@ -183,8 +186,6 @@ int		open_game(t_game *game);
 void	put_pixel(t_image *img, int x, int y, int color);
 
 /*game/draw_map.c*/
-void	draw_map_2d(t_game *game);
-void	draw_player_direction(t_game *game);
 void	draw_background(t_game *game);
 
 /*game/movement.c*/
