@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: loup <loup@student.42.fr>                  +#+  +:+       +#+         #
+#    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/25 17:22:29 by loup             ###   ########.fr        #
+#    Updated: 2026/09/29 11:17:41 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS        = main.c \
               get_next_line/get_next_line.c \
               get_next_line/get_next_line_utils.c \
 			  init_struct.c \
+			  init_struct2.c \
 			  textures.c \
 			  error.c \
 			  game/game.c \

@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/29 10:30:38 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:50:13 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ int		game_loop(t_game *game);
 /*error.c*/
 void	print_error_exit(t_game *game, char *end_mess);
 int		exit_game(t_game *game);
+void	free_tab(char **tab);
 
 /*textures.c*/
 int		load_wall_textures(t_game *game);
