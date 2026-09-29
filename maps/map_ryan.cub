@@ -1,10 +1,10 @@
-NO ./textures/north.xpm
-SO ./textures/south.xpm
-WE ./textures/west.xpm
-EA ./textures/east.xpm
+NO ./textures/ryan_north.xpm
+SO ./textures/ryan_south.xpm
+WE ./textures/ryan_west.xpm
+EA ./textures/ryan_east.xpm
 
 F 147,100,124
-C 135,206,201
+C 1,1,1
 
 11111111111111111111111111
 10000000000000011111

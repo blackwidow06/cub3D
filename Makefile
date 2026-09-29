@@ -6,7 +6,7 @@
 #    By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/29 07:44:30 by malavaud         ###   ########.fr        #
+#    Updated: 2026/09/29 08:19:41 by malavaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRCS        = main.c \
 			  textures.c \
 			  error.c \
 			  game/game.c \
-			  game/draw_map_utils.c \
 			  game/draw_map.c \
 			  game/draw_map_utils.c \
 			  game/movement.c \

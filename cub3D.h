@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loup <loup@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/25 17:31:13 by loup             ###   ########.fr       */
+/*   Updated: 2026/09/29 08:19:22 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,8 +183,6 @@ int		open_game(t_game *game);
 void	put_pixel(t_image *img, int x, int y, int color);
 
 /*game/draw_map.c*/
-void	draw_map_2d(t_game *game);
-void	draw_player_direction(t_game *game);
 void	draw_background(t_game *game);
 
 /*game/movement.c*/
