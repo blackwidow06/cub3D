@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/28 13:13:37 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/10/01 09:25:53 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ void	free_tab(char **tab)
 	free(tab);
 }
 
-int	exit_game(t_game *game)
+static void	free_textures(t_game *game)
 {
-	if (!game)
-		exit(0);
 	if (game->texture.ceiling)
 		free(game->texture.ceiling);
 	if (game->texture.floor)
@@ -43,22 +41,34 @@ int	exit_game(t_game *game)
 		free(game->texture.east);
 	if (game->texture.east)
 		free(game->texture.west);
+}
+
+static void	free_images(t_game *game)
+{
+	if (game->wall_texture.img)
+		mlx_destroy_image(game->mlx, game->wall_texture.img);
+	if (game->wall_north.img)
+		mlx_destroy_image(game->mlx, game->wall_north.img);
+	if (game->image.img)
+		mlx_destroy_image(game->mlx, game->image.img);
+	if (game->wall_south.img)
+		mlx_destroy_image(game->mlx, game->wall_south.img);
+	if (game->wall_east.img)
+		mlx_destroy_image(game->mlx, game->wall_east.img);
+	if (game->wall_west.img)	
+		mlx_destroy_image(game->mlx, game->wall_west.img);
+}
+
+int	exit_game(t_game *game)
+{
+	if (!game)
+		exit(0);
+	free_textures(game);
 	if (game->map.grid)	
 		free_tab(game->map.grid);
 	if (game->mlx)
 	{
-		if (game->wall_texture.img)
-			mlx_destroy_image(game->mlx, game->wall_texture.img);
-		if (game->wall_north.img)
-			mlx_destroy_image(game->mlx, game->wall_north.img);
-		if (game->image.img)
-			mlx_destroy_image(game->mlx, game->image.img);
-		if (game->wall_south.img)
-			mlx_destroy_image(game->mlx, game->wall_south.img);
-		if (game->wall_east.img)
-			mlx_destroy_image(game->mlx, game->wall_east.img);
-		if (game->wall_west.img)	
-			mlx_destroy_image(game->mlx, game->wall_west.img);
+		free_images(game);
 		if (game->window)
 			mlx_destroy_window(game->mlx, game->window);
 		mlx_destroy_display(game->mlx);
