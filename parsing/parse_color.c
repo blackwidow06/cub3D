@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 17:04:44 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/28 12:50:57 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/10/01 16:20:39 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	color_translation(char	*color)
 {
 	char	**rgb;
+	char	*curr;
 	int		red;
 	int		green;
 	int		blue;
@@ -22,9 +23,12 @@ static int	color_translation(char	*color)
 	rgb = ft_split(color, ',');
 	if (rgb == NULL)
 		return (1);
-	red = ft_atoi(rgb[0]);
-	green = ft_atoi(rgb[1]);
-	blue = ft_atoi(rgb[2]);
+	curr = skip_spaces(rgb[0]);
+	red = ft_atoi(curr);
+	curr = skip_spaces(rgb[1]);
+	green = ft_atoi(curr);
+	curr = skip_spaces(rgb[2]);
+	blue = ft_atoi(curr);
 	free_split(rgb, 3);
 	return ((red << 16) | (green << 8) | blue);
 }

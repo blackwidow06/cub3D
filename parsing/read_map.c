@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 09:45:29 by malavaud          #+#    #+#             */
-/*   Updated: 2026/10/01 15:03:08 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/10/01 15:42:28 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	parse_colors(t_texture *texture, char *line)
 
 static int	parse_line(char *line, t_texture *texture)
 {
-	skip_spaces(line);
+	line = skip_spaces(line);
 	if (ft_strncmp(line, "NO", 2) == 0)
 		return (parse_textures(&texture->north, line));
 	else if (ft_strncmp(line, "SO", 2) == 0)
