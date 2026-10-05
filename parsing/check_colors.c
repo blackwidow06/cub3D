@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 11:28:16 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/29 11:49:24 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/10/01 15:47:37 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static	int	check_value_colors(char *str)
 	value = 0;
 	if (str[0] == '\0')
 		return (1);
+	str = skip_spaces(str);
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
