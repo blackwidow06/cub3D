@@ -1,10 +1,10 @@
 NO ./textures/rdj_north.xpm
-SO ./textures/rdj_south.xpm
 WE ./textures/rdj_west.xpm
 EA ./textures/rdj_east.xpm
+SO ./textures/rdj_south.xpm
 
-F 147, 100, 124
 C 1,1,1
+F 147,100,124
 
 111111111111111111111111
 10000000000000000000111

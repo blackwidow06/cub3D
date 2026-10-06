@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 12:44:54 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/09/29 10:31:04 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/10/01 15:00:13 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	init_player(t_player *player)
 	player->dir_y = 0;
 	player->plane_x = 0;
 	player->plane_y = 0;
-	player->move_speed = 0.03;
-	player->rot_speed = 0.02;
+	player->move_speed = 0.05;
+	player->rot_speed = 0.05;
 }
 
 void	init_texture(t_texture *texture)
