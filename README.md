@@ -1,2 +1,1 @@
-# cub3D de malavaud et mrojouan
-gsdffdf
+*This project has been created as part of the 42 curriculum by malavaud and mrojouan.*
