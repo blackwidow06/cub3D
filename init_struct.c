@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 12:44:54 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/10/01 15:00:13 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/11 09:43:31 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ void	init_texture(t_texture *texture)
 	texture->floor = NULL;
 }
 
-void	init_game(t_game *game)
+void	init_game(t_game *game, char *filename)
 {
 	game->mlx = NULL;
 	game->window = NULL;
+	game->mapfile = filename;
 	game->floor_rgb = 0;
 	game->ceiling_rgb = 0;
 	game->key_a = 0;

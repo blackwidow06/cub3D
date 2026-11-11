@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/29 11:58:46 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/11 09:50:43 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
+	char		*mapfile;
 	int			floor_rgb;
 	int			ceiling_rgb;
 	int			key_w;
@@ -140,7 +141,7 @@ int		check_textures(t_texture *texture);
 int		read_map(char *filename, t_texture *texture);
 
 /*parsing/parsing.c*/
-int		parsing(char *filename, t_game *game);
+int		parsing(t_game *game);
 
 /*parsing/parse_player.c*/
 int		parse_player(t_game *game);
@@ -173,7 +174,7 @@ int		get_map_width(t_map *map);
 /*init_struct.c*/
 void	init_texture(t_texture *texture);
 void	init_player(t_player *player);
-void	init_game(t_game *game);
+void	init_game(t_game *game, char *filename);
 void	init_map(t_map *map);
 
 /*init_struct2.c*/
@@ -204,6 +205,9 @@ void	init_ray(t_game *game, int x);
 
 /*raycasting/raycasting.c*/
 int		game_loop(t_game *game);
+
+/*gnl_clear.c*/
+void	gnl_clear(t_game *game);
 
 /*error.c*/
 void	print_error_exit(t_game *game, char *end_mess);

@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 10:49:05 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/29 10:32:04 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/11 10:36:14 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
-	init_game(&game);
-	parsing(argv[1], &game);
+	init_game(&game, argv[1]);
+	parsing(&game);
 	open_game(&game);
 	return (0);
 }
