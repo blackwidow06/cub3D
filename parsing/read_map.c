@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 09:45:29 by malavaud          #+#    #+#             */
-/*   Updated: 2026/10/01 15:42:28 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/11 10:43:32 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,11 @@
 static int	parse_textures(char **texture, char *line)
 {
 	if (*texture != NULL)
-	{
-		printf("Error\nDuplicate texture\n");
 		return (1);
-	}
 	line += 2;
 	line = skip_spaces(line);
 	if (*line == '\0')
-	{
-		printf("Error\nEmpty texture path\n");
 		return (1);
-	}
 	*texture = ft_strdup(line);
 	if (*texture == NULL)
 		return (1);
@@ -69,6 +63,8 @@ int	read_map(char *filename, t_texture *texture)
 	if (fd == -1)
 		return (1);
 	line = get_next_line(fd);
+	if (!line)
+		return (1);
 	while (line != NULL)
 	{
 		remove_newline(line);

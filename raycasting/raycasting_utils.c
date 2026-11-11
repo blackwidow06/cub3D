@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:37:02 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/28 09:31:51 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/10 10:27:07 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ void	single_ray(t_game *game)
 	ray->side = 0;
 	while (!is_map_wall(game, ray))
 	{
-		if (ray->side_dist_x < ray->side_dist_y) /*quelle frontiere est plus proche*/
+		if (ray->side_dist_x < ray->side_dist_y)
 		{
-			ray->side_dist_x += ray->delta_dist_x;/*si x est plus proche change de colonne*/
+			ray->side_dist_x += ray->delta_dist_x;
 			ray->map_x += ray->step_x;
-			ray->side = 0;/*verticale*/
+			ray->side = 0;
 		}
 		else
 		{
-			ray->side_dist_y += ray->delta_dist_y;/*si y est plus proche change de ligne*/
+			ray->side_dist_y += ray->delta_dist_y;
 			ray->map_y += ray->step_y;
-			ray->side = 1;/*horizontale*/
+			ray->side = 1;
 		}
 	}
 }
@@ -53,7 +53,7 @@ void	calculate_wall(t_game *game)
 	t_ray	*ray;
 
 	ray = &game->ray;
-	if (ray->side == 0) /*calculer distance du mur x ou y*/
+	if (ray->side == 0)
 		ray->perp_wall_dist = ray->side_dist_x
 			- ray->delta_dist_x;
 	else
@@ -61,7 +61,7 @@ void	calculate_wall(t_game *game)
 			- ray->delta_dist_y;
 	if (ray->perp_wall_dist <= 0)
 		ray->perp_wall_dist = 0.1;
-	ray->line_height = (int)(WIN_HEIGHT /*calcul hauteur de la colonne*/
+	ray->line_height = (int)(WIN_HEIGHT
 			/ ray->perp_wall_dist);
 	ray->draw_start = -ray->line_height / 2
 		+ WIN_HEIGHT / 2;
@@ -69,7 +69,7 @@ void	calculate_wall(t_game *game)
 		+ WIN_HEIGHT / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	if (ray->draw_end >= WIN_HEIGHT) /*limite pour pas dessiner hors de l'ecran*/
+	if (ray->draw_end >= WIN_HEIGHT)
 		ray->draw_end = WIN_HEIGHT - 1;
 }
 

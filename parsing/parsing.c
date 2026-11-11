@@ -6,23 +6,23 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:11:43 by malavaud          #+#    #+#             */
-/*   Updated: 2026/10/06 14:44:19 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/11 10:41:43 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	parsing(char *filename, t_game *game)
+int	parsing(t_game *game)
 {
-	if (check_map_file(filename) != 0)
+	if (check_map_file(game->mapfile) != 0)
 		print_error_exit(game, "Error\nfile .cub invalid\n");
-	if (read_map(filename, &game->texture) != 0)
-		print_error_exit(game, "Error\nInvalid color\n");
+	if (read_map(game->mapfile, &game->texture) != 0)
+		print_error_exit(game, "Error\nInvalid file data\n");
 	if (check_textures(&game->texture) != 0)
 		print_error_exit(game, "Error\nInvalid texture\n");
 	if (check_all_colors(&game->texture) != 0)
 		print_error_exit(game, "Error\nInvalid color\n");
-	if (read_map_grid(filename, &game->map) != 0)
+	if (read_map_grid(game->mapfile, &game->map) != 0)
 		print_error_exit(game, "Error\nInvalid map\n");
 	if (check_map_characters(&game->map) != 0)
 		print_error_exit(game, "Error\nInvalid map characters\n");
