@@ -6,7 +6,7 @@
 #    By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/11 09:24:26 by malavaud          #+#    #+#              #
-#    Updated: 2026/09/29 11:58:50 by mrojouan         ###   ########.fr        #
+#    Updated: 2026/11/11 10:36:40 by mrojouan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS        = main.c \
 			  init_struct2.c \
 			  textures.c \
 			  error.c \
+			  gnl_clear.c \
 			  game/game.c \
 			  game/draw_map.c \
 			  game/draw_map_utils.c \
