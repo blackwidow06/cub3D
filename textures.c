@@ -6,7 +6,7 @@
 /*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 08:18:43 by malavaud          #+#    #+#             */
-/*   Updated: 2026/11/11 13:48:53 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/11/12 10:48:15 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ t_image	*get_wall_texture(t_game *game)
 	if (game->ray.side == 0)
 	{
 		if (game->ray.ray_dir_x > 0)
-		return (&game->wall_west);
+			return (&game->wall_west);
 		return (&game->wall_east);
 	}
 	if (game->ray.ray_dir_y > 0)
-	return (&game->wall_north);
+		return (&game->wall_north);
 	return (&game->wall_south);
 }
