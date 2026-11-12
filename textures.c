@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 08:18:43 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/28 12:22:51 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/11 13:48:53 by malavaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,3 @@ t_image	*get_wall_texture(t_game *game)
 	return (&game->wall_north);
 	return (&game->wall_south);
 }
-
