@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/11/11 13:45:46 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/12 11:53:07 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	free_textures(t_game *game)
 		free(game->texture.south);
 	if (game->texture.east)
 		free(game->texture.east);
-	if (game->texture.east)
+	if (game->texture.west)
 		free(game->texture.west);
 }
 

@@ -6,13 +6,13 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 17:04:44 by mrojouan          #+#    #+#             */
-/*   Updated: 2026/10/01 16:20:39 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/12 13:04:21 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	color_translation(char	*color)
+static int	color_translation(char *color, int *result)
 {
 	char	**rgb;
 	char	*curr;
@@ -30,16 +30,15 @@ static int	color_translation(char	*color)
 	curr = skip_spaces(rgb[2]);
 	blue = ft_atoi(curr);
 	free_split(rgb, 3);
-	return ((red << 16) | (green << 8) | blue);
+	*result = (red << 16) | (green << 8) | blue;
+	return (0);
 }
 
 int	parse_color(t_game *game)
 {
-	game->floor_rgb = color_translation(game->texture.floor);
-	if (!game->floor_rgb)
+	if (color_translation(game->texture.floor, &game->floor_rgb) != 0)
 		return (1);
-	game->ceiling_rgb = color_translation(game->texture.ceiling);
-	if (!game->ceiling_rgb)
+	if (color_translation(game->texture.ceiling, &game->ceiling_rgb) != 0)
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 09:47:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/11/10 12:58:18 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/11/12 11:27:14 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ static int	check_texture_extension(char *path)
 	if (len < 4)
 		return (1);
 	if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
-	{
-		printf("Error\nTextures must be .xpm\n");
 		return (1);
-	}
 	return (0);
 }
 

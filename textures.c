@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malavaud <malavaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 08:18:43 by malavaud          #+#    #+#             */
-/*   Updated: 2026/11/12 10:48:15 by malavaud         ###   ########.fr       */
+/*   Updated: 2026/11/12 12:11:33 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ static	int	load_one_texture(t_game *game, t_image *image, char *path)
 			&image->width,
 			&image->height);
 	if (!image->img)
-		return (1);
+		print_error_exit(game, "Error\nInvalid xpm file data\n");
 	image->addr = mlx_get_data_addr(
 			image->img,
 			&image->bits_per_pixel,
 			&image->line_length,
 			&image->byte_order);
+	if (!image->addr)
+		print_error_exit(game, "Error\nInvalid xpm file data\n");
 	return (0);
 }
 
