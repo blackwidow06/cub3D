@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 11:02:06 by malavaud          #+#    #+#             */
-/*   Updated: 2026/11/11 09:50:43 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/12 10:21:27 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	double		x; /*placement*/
+	double		x; 
 	double		y;
-	double		dir_x; /*regard du joueur hori*/
-	double		dir_y; /*regard du joueur verti*/
-	double		plane_x; /*largeur de la camera hori*/
-	double		plane_y; /*largeur de la camera verti*/
+	double		dir_x; 
+	double		dir_y;
+	double		plane_x;
+	double		plane_y; 
 	double		move_speed;
 	double		rot_speed;
 }			t_player;
@@ -81,9 +81,9 @@ typedef struct s_ray
 	int			map_y;
 	int			step_x;
 	int			step_y;
-	double		delta_dist_x; /*distane entre deux frontieres*/
+	double		delta_dist_x; 
 	double		delta_dist_y;
-	double		side_dist_x;/*distance pour atteindre la next front*/
+	double		side_dist_x;
 	double		side_dist_y;
 	double		wall_dist;
 	double		perp_wall_dist;
