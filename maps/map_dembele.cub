@@ -1,6 +1,6 @@
-	NO ./textures/dembele_north.xpm
+NO ./textures/dembele_north.xpm
 SO ./textures/dembele_south.xpm
-					WE ./textures/dembele_west.xpm
+WE ./textures/dembele_west.xpm
 EA ./textures/dembele_east.xpm
 
 F 147,100,124
