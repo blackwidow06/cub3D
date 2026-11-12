@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 10:15:34 by malavaud          #+#    #+#             */
-/*   Updated: 2026/11/11 10:21:04 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/11 13:45:46 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	free_images(t_game *game)
 		mlx_destroy_image(game->mlx, game->wall_south.img);
 	if (game->wall_east.img)
 		mlx_destroy_image(game->mlx, game->wall_east.img);
-	if (game->wall_west.img)	
+	if (game->wall_west.img)
 		mlx_destroy_image(game->mlx, game->wall_west.img);
 }
 
@@ -64,7 +64,7 @@ int	exit_game(t_game *game)
 	if (!game)
 		exit(0);
 	free_textures(game);
-	if (game->map.grid)	
+	if (game->map.grid)
 		free_tab(game->map.grid);
 	if (game->mlx)
 	{

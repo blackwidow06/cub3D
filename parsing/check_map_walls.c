@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 10:41:58 by malavaud          #+#    #+#             */
-/*   Updated: 2026/09/23 13:59:01 by mrojouan         ###   ########.fr       */
+/*   Updated: 2026/11/12 10:05:02 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ static int	check_top_bottom(t_map *map)
 	i = 0;
 	while (map->grid[0][i] != '\0')
 	{
-		if (map->grid[0][i] != '1' && map->grid[0][i] != ' ')
+		if (map->grid[0][i] != '1'
+				&& map->grid[0][i] != ' '
+				&& map->grid[0][i] != '\t')
 			return (1);
 		i++;
 	}
@@ -73,7 +75,8 @@ static int	check_top_bottom(t_map *map)
 	while (map->grid[map->height - 1][i] != '\0')
 	{
 		if (map->grid[map->height - 1][i] != '1'
-				&& map->grid[map->height - 1][i] != ' ')
+				&& map->grid[map->height - 1][i] != ' '
+				&& map->grid[map->height - 1][i] != '\t')
 			return (1);
 		i++;
 	}
@@ -91,12 +94,12 @@ static int	check_sides(t_map *map)
 	{
 		j = 0;
 		len = ft_strlen(map->grid[i]);
-		while (map->grid[i][j] == ' ')
+		while (map->grid[i][j] == ' ' || map->grid[i][j] == '\t')
 			j++;
 		if (map->grid[i][j] == '\0' || map->grid[i][j] != '1')
 			return (1);
 		j = len - 1;
-		while (j >= 0 && map->grid[i][j] == ' ')
+		while (j >= 0 && (map->grid[i][j] == ' ' || map->grid[i][j] == '\t'))
 			j--;
 		if (j < 0 || map->grid[i][j] != '1')
 			return (1);
